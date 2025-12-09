@@ -1,0 +1,257 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="Get CSZ file" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:p="http://schemas.uipath.com/workflow/activities/ocr" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Drawing;assembly=System.Drawing.Common" xmlns:sd1="clr-namespace:System.Drawing;assembly=System.Drawing.Primitives" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:uix="http://schemas.uipath.com/workflow/activities/uix" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="nextPageElement" Type="InArgument(ui:UiElement)" />
+    <x:Property Name="buttonElement" Type="InArgument(ui:UiElement)" />
+  </x:Members>
+  <sap2010:WorkflowViewState.IdRef>ActivityBuilder_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <sco:Collection x:TypeArguments="x:String">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Collections.ObjectModel</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>UiPath.UIAutomationCore.Contracts</x:String>
+      <x:String>UiPath.UIAutomationNext.Enums</x:String>
+      <x:String>System.Reflection</x:String>
+      <x:String>UiPath.UIAutomationNext.Contracts</x:String>
+      <x:String>System.Runtime.Serialization</x:String>
+      <x:String>UiPath.UIAutomationNext.Models.CV</x:String>
+      <x:String>UiPath.UIAutomationNext.Activities</x:String>
+      <x:String>UiPath.Platform.ObjectLibrary</x:String>
+      <x:String>UiPath.Shared.Activities</x:String>
+      <x:String>UiPath.Vision.OCR</x:String>
+      <x:String>UiPath.OCR.Contracts</x:String>
+      <x:String>UiPath.OCR.Activities</x:String>
+      <x:String>UiPath.OCR.Contracts.Activities</x:String>
+      <x:String>UiPath.UIAutomationNext.Activities.Models</x:String>
+      <x:String>System.ComponentModel</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>GlobalVariablesNamespace</x:String>
+      <x:String>GlobalConstantsNamespace</x:String>
+    </sco:Collection>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <sco:Collection x:TypeArguments="AssemblyReference">
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic.Core</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic.Forms</AssemblyReference>
+      <AssemblyReference>Microsoft.Win32.Primitives</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>NPOI</AssemblyReference>
+      <AssemblyReference>PresentationCore</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>System.Collections</AssemblyReference>
+      <AssemblyReference>System.ComponentModel</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.EventBasedAsync</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Primitives</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.TypeConverter</AssemblyReference>
+      <AssemblyReference>System.Configuration.ConfigurationManager</AssemblyReference>
+      <AssemblyReference>System.Console</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Data.Common</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Drawing.Common</AssemblyReference>
+      <AssemblyReference>System.Drawing.Primitives</AssemblyReference>
+      <AssemblyReference>System.Linq</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>System.Memory.Data</AssemblyReference>
+      <AssemblyReference>System.ObjectModel</AssemblyReference>
+      <AssemblyReference>System.Private.CoreLib</AssemblyReference>
+      <AssemblyReference>System.Private.DataContractSerialization</AssemblyReference>
+      <AssemblyReference>System.Private.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.Private.Uri</AssemblyReference>
+      <AssemblyReference>System.Reflection.DispatchProxy</AssemblyReference>
+      <AssemblyReference>System.Reflection.Metadata</AssemblyReference>
+      <AssemblyReference>System.Reflection.TypeExtensions</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization.Formatters</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization.Primitives</AssemblyReference>
+      <AssemblyReference>System.Security.Permissions</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.ServiceModel.Activities</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Mail.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.OCR.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.OCR.Contracts</AssemblyReference>
+      <AssemblyReference>UiPath.OCR.Core</AssemblyReference>
+      <AssemblyReference>UiPath.Platform</AssemblyReference>
+      <AssemblyReference>UiPath.Studio.Constants</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.ViewModels</AssemblyReference>
+      <AssemblyReference>UiPath.Testing.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationNext</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationNext.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Vision.Core</AssemblyReference>
+      <AssemblyReference>UiPath.Workflow</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+    </sco:Collection>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence sap2010:WorkflowViewState.IdRef="Sequence_26">
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <Sequence sap:VirtualizedContainerService.HintSize="712,817.6" sap2010:WorkflowViewState.IdRef="Sequence_25">
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+      <ui:ClickOCRText ContinueOnError="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click 'QuickSearch'" sap:VirtualizedContainerService.HintSize="649.6,52.8" sap2010:WorkflowViewState.IdRef="ClickOCRText_2" KeyModifiers="None" MouseButton="BTN_LEFT" Occurrence="1" Text="Quick Search">
+        <ui:ClickOCRText.CursorPosition>
+          <ui:CursorPosition Position="Center">
+            <ui:CursorPosition.OffsetX>
+              <InArgument x:TypeArguments="x:Int32" />
+            </ui:CursorPosition.OffsetX>
+            <ui:CursorPosition.OffsetY>
+              <InArgument x:TypeArguments="x:Int32" />
+            </ui:CursorPosition.OffsetY>
+          </ui:CursorPosition>
+        </ui:ClickOCRText.CursorPosition>
+        <ui:ClickOCRText.OCREngine>
+          <ActivityFunc x:TypeArguments="sd:Image, scg:IEnumerable(scg:KeyValuePair(sd1:Rectangle, x:String))">
+            <ActivityFunc.Argument>
+              <DelegateInArgument x:TypeArguments="sd:Image" Name="Image" />
+            </ActivityFunc.Argument>
+            <p:UiPathScreenOCR ApiKey="{x:Null}" Endpoint="{x:Null}" Output="{x:Null}" PredictionId="{x:Null}" Text="{x:Null}" UseLocalServer="{x:Null}" ComputeSkewAngle="False" DisplayName="UiPath Screen OCR" ExtractWords="True" sap:VirtualizedContainerService.HintSize="200,24.8" sap2010:WorkflowViewState.IdRef="UiPathScreenOCR_2" Image="[Image]" Language="auto" Profile="Screen" Scale="1" Timeout="100000" />
+          </ActivityFunc>
+        </ui:ClickOCRText.OCREngine>
+        <ui:ClickOCRText.Target>
+          <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="498ae7d8-2d70-4195-9e52-703b281bff3f" InformativeScreenshot="f0f22717ee4c24d12f5ae751bd1e8553" Selector="&lt;webctrl id='MAIN_TBL' tag='TABLE' /&gt;&lt;webctrl idx='9' parentid='ln_menu' tableRow='1' tag='DIV' /&gt;">
+            <ui:Target.TimeoutMS>
+              <InArgument x:TypeArguments="x:Int32" />
+            </ui:Target.TimeoutMS>
+            <ui:Target.WaitForReady>
+              <InArgument x:TypeArguments="ui:WaitForReady" />
+            </ui:Target.WaitForReady>
+          </ui:Target>
+        </ui:ClickOCRText.Target>
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </ui:ClickOCRText>
+      <ui:WaitUiElementAppear WaitActive="{x:Null}" WaitVisible="{x:Null}" DisplayName="Focus Auction Type combo box" FoundElement="[nextPageElement]" sap:VirtualizedContainerService.HintSize="649.6,52.8" sap2010:WorkflowViewState.IdRef="WaitUiElementAppear_7">
+        <ui:WaitUiElementAppear.Target>
+          <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="758837a3-6256-46a6-8837-e59851bf20ad" InformativeScreenshot="a6bbc97e23cfabba34fb4195af30ccee" Selector="&lt;webctrl id='MAIN_TBL' tag='TABLE' /&gt;&lt;webctrl id='AUCT_TYPE' tableRow='1' tag='SELECT' /&gt;">
+            <ui:Target.TimeoutMS>
+              <InArgument x:TypeArguments="x:Int32" />
+            </ui:Target.TimeoutMS>
+            <ui:Target.WaitForReady>
+              <InArgument x:TypeArguments="ui:WaitForReady" />
+            </ui:Target.WaitForReady>
+          </ui:Target>
+        </ui:WaitUiElementAppear.Target>
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </ui:WaitUiElementAppear>
+      <uix:NSelectItem DisplayName="Select Item 'Auction Type'" sap:VirtualizedContainerService.HintSize="649.6,52.8" sap2010:WorkflowViewState.IdRef="NSelectItem_2" Item="Foreclosure" OutUiElement="[nextPageElement]" ScopeIdentifier="e09c41a4-8693-49b5-9859-5d3301bfa32b" Version="V3">
+        <uix:NSelectItem.Items>
+          <scg:List x:TypeArguments="x:String" Capacity="3">
+            <x:String>Choose Type</x:String>
+            <x:String>Foreclosure</x:String>
+            <x:String>TaxDeed</x:String>
+          </scg:List>
+        </uix:NSelectItem.Items>
+        <uix:NSelectItem.Target>
+          <uix:TargetAnchorable BrowserURL="https://seminole.realforeclose.com/index.cfm?zaction=admin&amp;zmethod=REPORT&amp;Report_id=33" CvTextArgument="Choose Type" CvType="Text" DesignTimeRectangle="27, 495, 259, 18" DesignTimeScaleFactor="1.25" ElementType="DropDown" FriendlyName="'Choose Type'" FullSelectorArgument="&lt;webctrl id='MAIN_TBL' tag='TABLE' /&gt;&lt;webctrl id='AUCT_TYPE' tableRow='1' tag='SELECT' /&gt;" FuzzySelectorArgument="&lt;webctrl id='MAIN_TBL' tag='TABLE' /&gt;&lt;webctrl id='AUCT_TYPE' type='' tag='SELECT' class='filter' aaname='' /&gt;" Guid="0596f6fe-8aad-4ebd-a843-99eb51c6e485" InformativeScreenshot="1d6e7f72fad032333c06902893b10bcb.png" ScopeSelectorArgument="&lt;html app='msedge.exe' title='RealForeclose- Seminole County -Report Viewer' /&gt;" SearchSteps="FuzzySelector" Version="V2" Visibility="Interactive">
+            <uix:TargetAnchorable.Anchors>
+              <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                <uix:Target DesignTimeRectangle="21, 470, 259, 21" ElementType="Text" FriendlyName="'Auction Type'" FullSelectorArgument="&lt;webctrl id='MAIN_TBL' tag='TABLE' /&gt;&lt;webctrl class='ts_lbl' parentid='FilterBox' tableRow='1' tag='DIV' /&gt;" FuzzySelectorArgument="&lt;webctrl id='MAIN_TBL' tag='TABLE' /&gt;&lt;webctrl class='ts_lbl' parentid='FilterBox' type='' tag='DIV' aaname='Auction Type: ' check:innerText='Auction Type:' /&gt;" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAQcAAAAZCAYAAAA8AOv4AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAAANOSURBVHhe7drPSyJhHAbw/Uc7ePHgqYOXXYwIkYiGiCAJPciudCgqy4Fpc1oLKazYVkKitiwoSooa/BOefd/5oTP2Wla4hT6Hz2Hm/b6vTvB9Zua1L41GA0RE7RgORKTEcCAiJYYDESkxHIhIieFAREoMByJSYjgQkRLDgYiUGA5EpMRwICIlhgMRKTEciEiJ4UBESoFw2EwvY+ibWjhhQNNPUffVfwolU3w/Hdm/irGmI2jyOtJHrXP2vKfXKYUn1pHcqH2+ayX6jxThkEN0rojpjF8B0VGncYYXzwILfLh3hkNo0gxe66yBiHut4blD1Cz/OkSDQxEOHRrNOkMqIcZjBRh3ivGP8s5wiK5c+epcVh1GOueMryrGiQZA9+EgVJf04PjFEZIzOsIx5047FMshohVhXFitOStyjol8qYiIrBM147/q9lj9zx40LYeQnCuENRMLf5wxh4Xr32XEx51GlXOHZ0qB9XsSDpJ1jGn5BDG6jV3VOFGfe0U4WNj+LpvUQPZcHN8cIi6bPS7ez/UKjK1DZDMGwrIJx0RDuY/jTjiIczEdmqjLr5SxeSmCQTSnXevN10v4Gpd1Yn3386u6YQdHZKqEha22mhM3IHoVDsL+wpq9dubEOfauRSs9rSXqN92Fw+M9qhsFp5kny6iKc7Wf4lg0fHttZdFpqGaDuw01suF/IqghI19REiXs+9/p7cARTwdyX+OuYodPZP4UD815gvd6M1dxNgx7GA7Xxrpd44UBw4EGiSIcnjG2jmXvjt2J3XRrSFWcY6eh2pr3fA9Rsd5zjdnYluvkEF+STyVBqSn5fUxsyroehoNXwzCgQaQIB8WvFfNl5A9qqD8GJ0sP9VtUD+Qj/4690+/tPwTvtm3NWy6+2HTeXboz9/Wmh+FwumrYNQwHGkSv2pAMuDlGcqLVrKH4GoZnTKTSwYZShkMXd2TlPJUehsPuD7nH0uXfg6jPvDEcvM1JHcmD28CeQN0s2E33bDh0fK24QlZbRjhVwZm7Tty8b6tp06tw8H6tSOygohon6nNvDAfRxJOidsLZnGyet+rIz8o1XgiHThuSJ+VWaLgbkvYGqL/GukRGfHZofAf78rgX4eD7P4cR4/rpOFHfa+AfRR9DfiESMHIAAAAASUVORK5CYII=" SearchSteps="FuzzySelector, Image" />
+              </scg:List>
+            </uix:TargetAnchorable.Anchors>
+          </uix:TargetAnchorable>
+        </uix:NSelectItem.Target>
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </uix:NSelectItem>
+      <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="649.6,52.8" sap2010:WorkflowViewState.IdRef="LogMessage_6" Message="[&quot;selected 'FORECLOSURES' from combo box&quot;]">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </ui:LogMessage>
+      <ui:WaitUiElementAppear WaitActive="{x:Null}" WaitVisible="{x:Null}" DisplayName="Find Element 'INPUT  testBut'" FoundElement="[buttonElement]" sap:VirtualizedContainerService.HintSize="649.6,52.8" sap2010:WorkflowViewState.IdRef="WaitUiElementAppear_8">
+        <ui:WaitUiElementAppear.Target>
+          <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="1363197a-9652-44e5-b2a3-4aea36e44505" InformativeScreenshot="2ffb8914aeb99a851dbbea02f039898d" Selector="&lt;webctrl id='MAIN_TBL' tag='TABLE' /&gt;&lt;webctrl id='testBut' tableRow='1' tag='INPUT' /&gt;">
+            <ui:Target.TimeoutMS>
+              <InArgument x:TypeArguments="x:Int32" />
+            </ui:Target.TimeoutMS>
+            <ui:Target.WaitForReady>
+              <InArgument x:TypeArguments="ui:WaitForReady" />
+            </ui:Target.WaitForReady>
+          </ui:Target>
+        </ui:WaitUiElementAppear.Target>
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </ui:WaitUiElementAppear>
+      <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click the &quot;foreclosure&quot; choice in combo box" sap:VirtualizedContainerService.HintSize="649.6,52.8" sap2010:WorkflowViewState.IdRef="NClick_12" InUiElement="[buttonElement]" KeyModifiers="None" MouseButton="Left" OutUiElement="[nextPageElement]" Version="V3">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </uix:NClick>
+      <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click file icon to download CSV file" sap:VirtualizedContainerService.HintSize="649.6,52.8" sap2010:WorkflowViewState.IdRef="NClick_13" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="e09c41a4-8693-49b5-9859-5d3301bfa32b" Version="V3">
+        <uix:NClick.Target>
+          <uix:TargetAnchorable BrowserURL="https://seminole.realforeclose.com/index.cfm?zaction=admin&amp;zmethod=REPORT&amp;Report_id=33" DesignTimeRectangle="341, 403, 20, 20" DesignTimeScaleFactor="1.25" ElementType="Icon" FriendlyName="'IMG'" FullSelectorArgument="&lt;webctrl id='MAIN_TBL' tag='TABLE' /&gt;&lt;webctrl tableRow='1' tag='IMG' /&gt;" FuzzySelectorArgument="&lt;webctrl id='MAIN_TBL' tag='TABLE' /&gt;&lt;webctrl type='' tag='IMG' class='' aaname='Report CSV' /&gt;" Guid="3f300c53-5612-49de-83b1-b6b11684bf03" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAAAOJSURBVEhLtZV7U1pXFMX7/dpP0cfk304n00k6bZ201oSoSUlrE1EEwUpEg0QSUV4aVBCYgtxrIiJCAeVxEbhcQASrK+ccINORRya22TNrGF77t89e++z7CbqEKJWROM7gIBpHKBL7T3oH6Pbl/6GuJ+gW5/UqpJMYROEQxWwE6agPqUMPKmIO5+cNXF5etn7ZjHq9ztQVUBLC4G2DiO3cwfrcTaxO34Tn5S2Etm/jhXYIAcf3cCz8AN3vv8CmlyMeO0SlUsHFxUUrwxUA7Xk7JKmOgJfH5Mg9/KkYwuPvPoX6zmcwjn+Jxckv8FQxBrP2axgnb0E98jOmZTewZltBIpFArVZrZbkCoIa2Y38/j6dzbzA66sKP36qhvH8b82PfYH78J+hV40SzsMwrYdY9xnP1bzDPPsTE+B/w+/2kOKmV5QqATks7rNYYHv7qhWONw9jA5+SPTtiXtVhQDiKZPYJi8CuE+G1sWnQwTd9DqVTCwMAA7HY7CoVCKwtwdnbGxADU7XZQwIh8C2sBHgfJGFJiHkf5LJK5FHJVCWnyKp1WSM8lVMvi9QCjj1zY4PZwLBaRJYmohGoZeZJYPKuh2iDH/+ccF2RyrgV4QACbXIgBNn1emFZX8MKyihWHHfzeHvIl8b0AajhVnxM0AS+tFkxpNEwzOh3cXi+EQv69gNPTU6begGATED8REM2kEMumERcyOD7JIS+VUCMT0g9QrVaZegC24ORfM8CsXg/Z8PA73ScyLi3h73hz8noB6MWj6nkCJ/eGAbiDMDzBANEOfFwQfp5HNBFHqVxm6+F6ALkbGzv7HSZTP8xWKwIch1w+3xdQJgVQdQU8IIDNwEGHySqtBmqtFutOJ1LpNOh66wWgt5qqO+CRG1tcE0BNjueySJeKH3QP+gJG5S682tnDUctkOp5/kf5/CIB+TtUVMExWhZ2sCgqgJvPhfcSzGWTJeO6S94HdXbg8HlhsNiwajZDL5XC73RBFsZWlDyAcPsGy5TVsbj82fD6svlqH0byMhaXn0C8aoNJME2mgVKkwMTkB5dQUDAYDQqEQm5p2UBhVB6DRaCCdEeDaDmDumQFjT56w+R+6excymYxVq1AoMDMzwxLbyCk4MlWCILD13I5iscjUAaBPJVpJJBIh7bLCSFpgMpngcDjgIW0JBoOs2mg0imQyyRJTM2nyfz/ROgDUoI+hjwwo4C1mNQoVHuuXuwAAAABJRU5ErkJggg==" InformativeScreenshot="892bf47cd5368d7da3e4bf67c596d165.png" ScopeSelectorArgument="&lt;html app='msedge.exe' htmlwindowname='_nw' title='RealForeclose- Seminole County -Report Viewer' /&gt;" SearchSteps="FuzzySelector, Image" Version="V2" Visibility="Interactive" />
+        </uix:NClick.Target>
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </uix:NClick>
+      <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="649.6,52.8" sap2010:WorkflowViewState.IdRef="LogMessage_7" Message="[&quot;Downloaded Foreclosure CSV for Seminole County&quot;]">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </ui:LogMessage>
+    </Sequence>
+  </Sequence>
+</Activity>

@@ -1,0 +1,421 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="Scrape_Craiglist" VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="797.6,5130.4" sap2010:WorkflowViewState.IdRef="Scrape_Craiglist_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:p="http://schemas.uipath.com/workflow/activities/python" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data.Common" xmlns:snm="clr-namespace:System.Net.Mail;assembly=System.Net.Mail" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:uix="http://schemas.uipath.com/workflow/activities/uix" xmlns:um="clr-namespace:UiPath.Mail;assembly=UiPath.Mail.Activities" xmlns:umab="clr-namespace:UiPath.Mail.Activities.Business;assembly=UiPath.Mail.Activities" xmlns:umabh="clr-namespace:UiPath.Mail.Activities.Business.HtmlEditor;assembly=UiPath.Mail.Activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <TextExpression.NamespacesForImplementation>
+    <sco:Collection x:TypeArguments="x:String">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Collections.ObjectModel</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>GlobalVariablesNamespace</x:String>
+      <x:String>GlobalConstantsNamespace</x:String>
+      <x:String>UiPath.UIAutomationNext.Enums</x:String>
+      <x:String>UiPath.UIAutomationCore.Contracts</x:String>
+      <x:String>UiPath.UIAutomationNext.Activities</x:String>
+      <x:String>UiPath.Platform.ObjectLibrary</x:String>
+      <x:String>UiPath.Shared.Activities</x:String>
+      <x:String>System.Reflection</x:String>
+      <x:String>System.Security</x:String>
+      <x:String>UiPath.Database</x:String>
+      <x:String>UiPath.Database.Activities</x:String>
+      <x:String>System.Runtime.Serialization</x:String>
+      <x:String>System.ComponentModel</x:String>
+      <x:String>System.Xml.Serialization</x:String>
+      <x:String>UiPath.DataTableUtilities</x:String>
+      <x:String>UiPath.UIAutomationNext.Contracts</x:String>
+      <x:String>UiPath.UIAutomationNext.Models.CV</x:String>
+      <x:String>UiPath.Python</x:String>
+      <x:String>UiPath.Python.Activities</x:String>
+      <x:String>Microsoft.VisualBasic.CompilerServices</x:String>
+      <x:String>UiPath.Mail</x:String>
+      <x:String>UiPath.Mail.Activities.Utils</x:String>
+      <x:String>UiPath.Mail.Activities.Business.HtmlEditor</x:String>
+      <x:String>UiPath.Mail.Activities.Business</x:String>
+      <x:String>UiPath.Mail.Activities</x:String>
+      <x:String>UiPath.Mail.Outlook.Enums</x:String>
+      <x:String>UiPath.Mail.Outlook.Activities</x:String>
+      <x:String>UiPath.Shared.Activities.ConnectionService.Contracts</x:String>
+      <x:String>UiPath.Mail.Activities.Business.ForEachMail</x:String>
+      <x:String>UiPath.Shared.Activities.Business</x:String>
+      <x:String>UiPath.UIAutomationNext.Activities.Models</x:String>
+      <x:String>UiPath.UIAutomationNext.Models.ExtractData</x:String>
+    </sco:Collection>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <sco:Collection x:TypeArguments="AssemblyReference">
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic.Core</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic.Forms</AssemblyReference>
+      <AssemblyReference>Microsoft.Win32.Primitives</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>NPOI</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>System.Collections</AssemblyReference>
+      <AssemblyReference>System.ComponentModel</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.EventBasedAsync</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Primitives</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.TypeConverter</AssemblyReference>
+      <AssemblyReference>System.Configuration.ConfigurationManager</AssemblyReference>
+      <AssemblyReference>System.Console</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Data.Common</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>System.Data.SqlClient</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Drawing.Common</AssemblyReference>
+      <AssemblyReference>System.Drawing.Primitives</AssemblyReference>
+      <AssemblyReference>System.Linq</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>System.Memory.Data</AssemblyReference>
+      <AssemblyReference>System.Net.Mail</AssemblyReference>
+      <AssemblyReference>System.ObjectModel</AssemblyReference>
+      <AssemblyReference>System.Private.CoreLib</AssemblyReference>
+      <AssemblyReference>System.Private.DataContractSerialization</AssemblyReference>
+      <AssemblyReference>System.Private.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.Private.Uri</AssemblyReference>
+      <AssemblyReference>System.Private.Xml</AssemblyReference>
+      <AssemblyReference>System.Reflection.DispatchProxy</AssemblyReference>
+      <AssemblyReference>System.Reflection.Metadata</AssemblyReference>
+      <AssemblyReference>System.Reflection.TypeExtensions</AssemblyReference>
+      <AssemblyReference>System.Runtime.InteropServices</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization.Formatters</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization.Primitives</AssemblyReference>
+      <AssemblyReference>System.Security.Permissions</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>UiPath.Database</AssemblyReference>
+      <AssemblyReference>UiPath.Database.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Mail</AssemblyReference>
+      <AssemblyReference>UiPath.Mail.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Mail.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.OCR.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.PDF.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Platform</AssemblyReference>
+      <AssemblyReference>UiPath.Python</AssemblyReference>
+      <AssemblyReference>UiPath.Python.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Studio.Constants</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.ViewModels</AssemblyReference>
+      <AssemblyReference>UiPath.Testing.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationNext</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationNext.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Web.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Workflow</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+    </sco:Collection>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence DisplayName="Scrape Craiglist" sap:VirtualizedContainerService.HintSize="808,5065.6" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="ui:DatabaseConnection" Name="mySQL" />
+      <Variable x:TypeArguments="sd:DataTable" Name="result" />
+    </Sequence.Variables>
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <p:PythonScope DisplayName="Python Scope" sap:VirtualizedContainerService.HintSize="745.6,541.6" sap2010:WorkflowViewState.IdRef="PythonScope_1" LibraryPath="C:\Python310\python310.dll" OperationTimeout="120" Path="C:\Python310" TargetPlatform="x64" Version="Python &gt;=3.10">
+      <p:PythonScope.Body>
+        <ActivityAction x:TypeArguments="x:Object">
+          <ActivityAction.Argument>
+            <DelegateInArgument x:TypeArguments="x:Object" Name="PythonEngineSessionProperty" />
+          </ActivityAction.Argument>
+          <Sequence DisplayName="Main Sequence after initial setup" sap:VirtualizedContainerService.HintSize="512,504.8" sap2010:WorkflowViewState.IdRef="Sequence_4">
+            <Sequence.Variables>
+              <Variable x:TypeArguments="x:String" Name="doc" />
+              <Variable x:TypeArguments="p:PythonObject" Name="DocAnalyzer" />
+              <Variable x:TypeArguments="p:PythonObject" Name="DocAnalyzerResult" />
+              <Variable x:TypeArguments="x:String" Name="result" />
+              <Variable x:TypeArguments="x:String" Name="instrumentNumber" />
+            </Sequence.Variables>
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <p:LoadScript Code="{x:Null}" sap2010:Annotation.AnnotationText="contains library of methods" DisplayName="Load Python Script" sap:VirtualizedContainerService.HintSize="449.6,84" sap2010:WorkflowViewState.IdRef="LoadScript_1" Result="[DocAnalyzer]" ScriptFile="C:\Users\philk\Dropbox\Real Estate\Deal Finder\scrape_craigslist.py">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                  <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+            </p:LoadScript>
+            <Sequence sap2010:Annotation.AnnotationText="loops through various Craigslist areas and extracts a list of properties for sale by onwer and adds them to MySQL RealDeal database" DisplayName="Search Public Record for Final Judgement" sap:VirtualizedContainerService.HintSize="449.6,268.8" sap2010:WorkflowViewState.IdRef="Sequence_5">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <p:InvokeMethod Parameters="{x:Null}" sap2010:Annotation.AnnotationText="calls python method to find the instrument number in the inner text var" DisplayName="get instrument number" sap:VirtualizedContainerService.HintSize="387.2,112.8" sap2010:WorkflowViewState.IdRef="InvokeMethod_1" Name="load_latest_listings" Result="[DocAnalyzerResult]">
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+              </p:InvokeMethod>
+            </Sequence>
+          </Sequence>
+        </ActivityAction>
+      </p:PythonScope.Body>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </p:PythonScope>
+    <Sequence DisplayName="Update Database and send emails" sap:VirtualizedContainerService.HintSize="745.6,3194.4" sap2010:WorkflowViewState.IdRef="Sequence_8">
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+      <ui:DatabaseConnect DisplayName="Connect to database" sap:VirtualizedContainerService.HintSize="683.2,60" sap2010:WorkflowViewState.IdRef="DatabaseConnect_1" ProviderName="System.Data.Odbc" ConnectionString="Dsn=realdeal" DatabaseConnection="[mySQL]" />
+      <ui:ExecuteQuery ContinueOnError="{x:Null}" ExistingDbConnection="{x:Null}" TimeoutMS="{x:Null}" CommandType="Text" ConnectionString="Dsn=realdeal" DataTable="[result]" DisplayName="make list of craiglist listings" sap:VirtualizedContainerService.HintSize="683.2,89.6" sap2010:WorkflowViewState.IdRef="ExecuteQuery_1" ProviderName="System.Data.Odbc" Sql="SELECT url FROM realdeal.craigslist;">
+        <ui:ExecuteQuery.Parameters>
+          <scg:Dictionary x:TypeArguments="x:String, Argument" />
+        </ui:ExecuteQuery.Parameters>
+      </ui:ExecuteQuery>
+      <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[result]" DisplayName="For Each Row in Listing Table" sap:VirtualizedContainerService.HintSize="683.2,2852.8" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
+        <ui:ForEachRow.Body>
+          <ActivityAction x:TypeArguments="sd:DataRow">
+            <ActivityAction.Argument>
+              <DelegateInArgument x:TypeArguments="sd:DataRow" Name="CurrentRow" />
+            </ActivityAction.Argument>
+            <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="649.6,2664.8" sap2010:WorkflowViewState.IdRef="Sequence_3">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <If Condition="[CurrentRow(&quot;id&quot;).tostring=&quot;&quot;]" DisplayName="If no email save yet do so, else send emails" sap:VirtualizedContainerService.HintSize="606.4,2575.2" sap2010:WorkflowViewState.IdRef="If_1">
+                <If.Then>
+                  <Sequence sap:VirtualizedContainerService.HintSize="572.8,2392" sap2010:WorkflowViewState.IdRef="Sequence_6">
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <uix:NApplicationCard AttachMode="ByInstance" DisplayName="Use Browser Edge: Condo for sale - real estate - by owner - apartment real estate sale - craigslist" sap:VirtualizedContainerService.HintSize="529.6,1465.6" sap2010:WorkflowViewState.IdRef="NApplicationCard_1" InteractionMode="DebuggerApi" ScopeGuid="26d78599-a61c-46d0-8660-de3f9fc485c3" Version="V2">
+                      <uix:NApplicationCard.Body>
+                        <ActivityAction x:TypeArguments="x:Object">
+                          <ActivityAction.Argument>
+                            <DelegateInArgument x:TypeArguments="x:Object" Name="WSSessionData" />
+                          </ActivityAction.Argument>
+                          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="449.6,1248.8" sap2010:WorkflowViewState.IdRef="Sequence_2">
+                            <Sequence.Variables>
+                              <Variable x:TypeArguments="x:String" Name="email" />
+                            </Sequence.Variables>
+                            <sap:WorkflowViewStateService.ViewState>
+                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                              </scg:Dictionary>
+                            </sap:WorkflowViewStateService.ViewState>
+                            <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'reply'" sap:VirtualizedContainerService.HintSize="387.2,157.6" sap2010:WorkflowViewState.IdRef="NClick_1" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="26d78599-a61c-46d0-8660-de3f9fc485c3" Version="V3">
+                              <uix:NClick.Target>
+                                <uix:TargetAnchorable BrowserURL="https://orlando.craigslist.org/reo/d/longwood-condo-for-sale/7664889142.html" CvElementArea="250, 282, 80, 43" CvTextArea="269, 292, 45, 23" CvTextArgument="reply" CvType="Button" DesignTimeRectangle="253, 283, 77, 40" DesignTimeScaleFactor="1.25" ElementType="Button" FriendlyName="'reply'" FullSelectorArgument="&lt;webctrl tag='BUTTON' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='BUTTON' type='' class='reply-button js-only' aaname='       reply     ' check:innerText='reply' /&gt;" Guid="c7ff8175-68d4-44e9-b3b3-371b2e1f6d2b" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAFEAAAAsCAYAAAAdM1QpAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAAAPHSURBVGhD7ZrNSxtBGIf7n/gnBE8eBE+evAm9Sc85BQ+CUCKWRjwoBAUJKDmEmlhJDQGT2kaWyBpaYpOIqG2DKVpRLBYM9tD7r/NmPzK7naQxmZjWzsBzyMw7M5nH+dq4j6BSx0lJlJCURAnJIfHHt58ovjzB29kiXj//oHBBXsgPeeKTLZEKKOiTdo7vp1XcXN4qXJAX8kOeeJG2RDJMAaLKCifkiXxZyZZIdtUMbA3yRL6sZEukNS+qoBBDvqykJLaJkigBJVECSqIElEQJKIkSUBIl8OAk6uOr8PeloQvKuoWSKAElUQJKogS6KrE2oFEdpQ0N8wM0uFXM+gqoWDGHH5HyJRDoN8r8A3EsTpVQ+cq3c4bkqNnOlo7QSMyI7Y8h6MuhdMzHuiTu6pinWG8eV1yMwSW2nrCywQz2HP3dne5LHIwxSesIzeSRXdIQDZs/se3kECR5nnUEp3LIRvJI+uKGoMc6yvbATInUjmcVgTENqUgBqQkzdugN3pVdfdoz8RypMfq8iW0upkaR9c/qT08eOvPboPsS2RcNLrh/mzw3ZkFfHK92nD+5XbxIY5rVmZ05MfNMiSwvMF7CBR8b3qzl12PdEm9xupCoxYTC13ZMPT+GaLKe1y73IJFEucqsZcakOPJrfMb6MCsb1nBQ+2xJFMwmK5aWpJnnlniz/x6L1JdjSZszdCSLIzuvfe5BomDwa2mWz2YW29OybGk6ySPikFbfE8t8GyZGHwkk8/xn/mC5xrbX9T3MpczP4E64B4n8gAzKc+Z+1pQ4krsUb0r0iWat1YcVK+7zKmIse2tJG/3X63RKTyTesH2PBrW4dOnMF9JsJlah+6iPJLb2jTxhn+UCltmhZCxps72xHE75mA7ojcSMhgDNtiZ7YmBEM/c5c9Ae1s5vVxH3/tmozyr2JulqxJY03Qpa/gO2Rm8kWmLo0NH407mKykKS5fNXDyuWnfJzXxyxFyvGMp2fO7PzG/a5kamd+iEvtS86pNqnRxIZOzqCtMRE98QhVse+RFszkdpiwnw6thveKZv1eYjooNGG31sQXL7bp3cSCfcTi/ApxJTofmIRPt007/Pg2XqtbnhN7r+DuypRDnWJoivOXdh7yv4AEh7z3Pw/Eo9LWGbLWdbdkOfBSzxaySAykUaQTnEPuwoVxXGd8OAlVpaM094/kEB040oY0yn/gMS/HyVRAkqiBJRECSiJEhBKVC95tk7DlzzV68at0/B1Y/Xi+58hL+SHPAlffKdEBWSYgmjNK5yQF/LDC6TkkKhSOwn4BV6ErmzsJ7n4AAAAAElFTkSuQmCC" InformativeScreenshot="19a51605f0c864d031684ac63fbde448.png" ScopeSelectorArgument="&lt;html app='msedge.exe' title='Condo for sale - real estate - by owner - apartment real estate sale - craigslist' /&gt;" SearchSteps="FuzzySelector, Image, CV" Version="V2" Visibility="Interactive">
+                                  <uix:TargetAnchorable.Anchors>
+                                    <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                                      <uix:Target CvTextArgument="favorite" CvType="Text" DesignTimeRectangle="375, 302, 86, 21" ElementType="Text" FriendlyName="'favorite'" FullSelectorArgument="&lt;webctrl class='action-label' tag='DIV' /&gt;" FuzzySelectorArgument="&lt;webctrl class='action-label' tag='DIV' type='' aaname='favorite' check:innerText='favorite' /&gt;" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAFoAAAAZCAYAAACxZDnAAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAAAOiSURBVGhD7VffZyNRFN7/KYQ8hKEM+zBPjaXz1MhDo2wIjZJ52ihrSo3SPEUeapSOUtmHmqVSSvYlfVjZp4ZKWUKXUMKq0Pr23B/5NWk3u8lkml3zMeTcc27mzHfP/c69b7CkeHh4wN3dHZ6enuTIy2AxLJbNWVYsLdH/G0KiA0JIdEAIiQ4IIdEBwTeiu5cmkmoMkUgEkWgO7k/peGW0SjrlpKN8IwceO6iXMrAupB0QfCL6GsV3RLCaRvHEhXtWR1t6XhsTRN+UoVMxGOfSDgg+EV2FwSo5X5X2EuOfJfrcEHIx8uilFnd1r2wY6yqUqPTFVSSyZdTvuRu1jwqNZ1DpCnuAR1o4mqPs1ORAD60zE+lVFk//E1WQ2DThfpduBp6HjuLnMtKKjDlojFf0RK4GlYhA79ZFgXKN8fEY1HUD9pU3sdkxP9HtOkmFhSRLMGXRbxe1JiX41UKCxmJrBspcTmxY7xPiAzccIS0Uo5GdOfV8ECdEgflFmNecrAh9vAmb/t8pGdDj9D9RIrApYgYkRlWkDxy4Rxbsrx7pYLkeGvydyb2hxHUvCtBoYQe5npRhrLF+o1Ll+0P2wqSjtqdBUalixvLsorJFcYNKaqC4Sna2Qp4hqnka0yzyEto2X0Rl2x2LQcdBhu2ULTlXEq3t1rm7j+ka3c/BQedRDnFQrlkaXy2KPOZE4BotPnwoF40DVuUj8iFlg217hs5xmvwaLKpOL2o7I9IjifZq71Sim0W+8xIfaBfQbhl97Lw2PncOLJzoXqeFxgXb7iaMzYTU68kPH8gHJyyB4jdhehdmFGMkzkp0X3J+8xR8OAoujugmbW2tnyw1F01DMmvCzHqrpA07RTFSArhsjGzXoIj2zvMbCyJakreSgdPsyTGBxv7kdmwfJvklp3IvZKN/amGYLh10OWLaOivRsiFr+34o8ctYENHSpgY2hl4dJms8HqLxw0Ga4nP5HPmSsEdvO9Oa4SY1MWbPSnS/Ga7Qgsljp0AX7jYtpEIFwF8wHxZW0c4GIzQGfcfmjYUfyeh8G4uzY5OHaKJKxNOTssXRbwR/c7ybSrRcVGXDgtM/3tFclb07rqNwJI53hRTbeWx3XYt5c2JxGn1fRznbb370YW+TKJw00Lk0oZCd+zQuut3TDI9LHz9XPs9cWLJFVCcuLH9ANFVqbVcfNuVbOSovV+LCIvM9a9Gb/YFPRIeYhpDogBASHRBCogNCSHRACIkOBMAv2QG1YFEFfRYAAAAASUVORK5CYII=" SearchSteps="FuzzySelector, Image, CV" />
+                                    </scg:List>
+                                  </uix:TargetAnchorable.Anchors>
+                                </uix:TargetAnchorable>
+                              </uix:NClick.Target>
+                            </uix:NClick>
+                            <Delay Duration="00:00:05" sap:VirtualizedContainerService.HintSize="387.2,90.4" sap2010:WorkflowViewState.IdRef="Delay_1" />
+                            <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'email'" sap:VirtualizedContainerService.HintSize="387.2,157.6" sap2010:WorkflowViewState.IdRef="NClick_2" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="26d78599-a61c-46d0-8660-de3f9fc485c3" Version="V3">
+                              <uix:NClick.Target>
+                                <uix:TargetAnchorable BrowserURL="https://orlando.craigslist.org/reo/d/longwood-condo-for-sale/7664889142.html" CvType="ArrowButton" DesignTimeRectangle="473, 329, 28, 33" DesignTimeScaleFactor="1.25" ElementType="ArrowButton" FriendlyName="'msedge.exe Condo'" Guid="938cb5ba-34aa-4cf0-ace8-f2bc6d6dd96d" InformativeScreenshot="b57ce1cee47ee49f5334e06b3997a953.png" ScopeSelectorArgument="&lt;html app='msedge.exe' title='Condo for sale - real estate - by owner - apartment real estate sale - craigslist' /&gt;" SearchSteps="CV" TargetType="ComputerVisionBased" Version="V2" Visibility="Interactive">
+                                  <uix:TargetAnchorable.Anchors>
+                                    <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                                      <uix:Target CvElementArea="252, 323, 253, 47" CvTextArea="291, 335, 50, 18" CvTextArgument="email" CvType="InputBox" DesignTimeRectangle="294, 334, 48, 23" ElementType="Text" FriendlyName="'email'" FullSelectorArgument="&lt;webctrl class='reply-option-label' tag='SPAN' /&gt;" FuzzySelectorArgument="&lt;webctrl class='reply-option-label' tag='SPAN' type='' aaname='email' check:innerText='email' /&gt;" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAADQAAAAbCAYAAAAzgqwIAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAAAK4SURBVFhH7VZNaxpRFO0/6U+QrLoouHLlTghkIVl14UpcBAqiGLCkoFQIlIDBxWBUxFQGVCyKKBOhKMZSrCViiwYMQgOKP+H0vnlvpjPGtMQp1KYuzmLunLn3nvfuxzyZ3SzwmLAVtOnYCtp0bAX9LSi+MwSe5iBfCFumRM9nSGTMvK2gjcH/K2g0Rj0o4+gZu2LCThoxbxPdvpmnloBLwaDVRWo/h5CN88N776G05uRniKo3j/AOt4d2S6g2yG7wMbuZ46tUw7Erq38fsKXJRwnF8tTEXa/k+l0kHNxx1KugKnVQJHFhFsxegmIQpQZw5BGzkwh3DUXGPcjxpJwFxHeZOGEPkjBmt1fQvtZ8zNEOZlU+OwT5tIO61IJ8IOLZZJQvl+I9TBAF8KeJlEY8aT6dWUNBlCXk6WAqbDwAJfOyh1ud+x1VD7cHPC1MdPsCnw5Z8mmkZGEbdiE5KJ67iZGBxzA5lVUfsTdj3fZwQdd0O+xkWBkZCBxaogVUB9zGA2SRrZi5gwi/pXhyqbySqxNYiQt+gNGIFUHCSYDKp05lsozzF+z2fgq4E0CAC8rhvGG235cAq4zpxyHaFKMaqUDyUHmK/rUmSBB+B80BD0B9pX0voAlaFroqgUlZwYnoWQ1hlwzJX1B7zpog0Schf89EuA+WBV1+wLHa/HmkMkOM+oYSrdT+gKBBCydE+FUPhRwFffJYFTR6yxs/+vqbmUeYJgr8nSVBlLTiE1NOMk+523cVPnYNE8mqIC3pcPCLmdfvQXIy3/Tu8Eq3ryGIwPYQ7RVGvLOHqDRkw2K0Kmg2oFjPmQ9a3MGmOniKrwqIskXszvMB5evq368niGH5T4E299F+jW9/A8+yIAb6y5D2WFXwWCGnjJQ0pr12hSwbFs46Pgvu+oL+cWwFbTq2gjYdj0zQAj8AET0ysQ5f4SIAAAAASUVORK5CYII=" SearchSteps="FuzzySelector, Image, CV" />
+                                    </scg:List>
+                                  </uix:TargetAnchorable.Anchors>
+                                </uix:TargetAnchorable>
+                              </uix:NClick.Target>
+                            </uix:NClick>
+                            <Delay Duration="00:00:05" sap:VirtualizedContainerService.HintSize="387.2,90.4" sap2010:WorkflowViewState.IdRef="Delay_2" />
+                            <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'copy'" sap:VirtualizedContainerService.HintSize="387.2,157.6" sap2010:WorkflowViewState.IdRef="NClick_3" InteractionMode="Simulate" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="26d78599-a61c-46d0-8660-de3f9fc485c3" Version="V3">
+                              <uix:NClick.Target>
+                                <uix:TargetAnchorable BrowserURL="https://orlando.craigslist.org/reo/d/longwood-condo-for-sale/7664889142.html" CvElementArea="521, 345, 88, 44" CvTextArea="555, 361, 45, 18" CvTextArgument="copy" CvType="Button" DesignTimeRectangle="521, 346, 88, 43" DesignTimeScaleFactor="1.25" ElementType="Button" FriendlyName="'copy'" Guid="ad6db0c2-169c-460c-bd88-92dee1199f6e" InformativeScreenshot="3d40072b3abafcd78d537841cf590f1b.png" ScopeSelectorArgument="&lt;html app='msedge.exe' title='Condo for sale - real estate - by owner - apartment real estate sale - craigslist' /&gt;" SearchSteps="CV" TargetType="ComputerVisionBased" Version="V2" Visibility="Interactive">
+                                  <uix:TargetAnchorable.Anchors>
+                                    <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                                      <uix:Target CvTextArgument="reply using default mail app:" CvType="Text" DesignTimeRectangle="264, 320, 343, 23" ElementType="Text" FriendlyName="'reply using'" FullSelectorArgument="&lt;webctrl class='reply-content-subheading' tag='DIV' /&gt;" FuzzySelectorArgument="&lt;webctrl class='reply-content-subheading' tag='DIV' type='' aaname='reply using default mail app:' check:innerText='reply using default mail app:' /&gt;" ImageBase64="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" SearchSteps="FuzzySelector, Image, CV" />
+                                    </scg:List>
+                                  </uix:TargetAnchorable.Anchors>
+                                </uix:TargetAnchorable>
+                              </uix:NClick.Target>
+                            </uix:NClick>
+                            <ui:GetFromClipboard TimeoutMS="{x:Null}" DisplayName="Get From Clipboard" sap:VirtualizedContainerService.HintSize="387.2,24.8" sap2010:WorkflowViewState.IdRef="GetFromClipboard_1">
+                              <ui:GetFromClipboard.Result>
+                                <OutArgument x:TypeArguments="x:String">[email]</OutArgument>
+                              </ui:GetFromClipboard.Result>
+                            </ui:GetFromClipboard>
+                            <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" AutoCloseAfter="00:00:00" DisplayName="Message Box" sap:VirtualizedContainerService.HintSize="387.2,85.6" sap2010:WorkflowViewState.IdRef="MessageBox_1" Text="[email]" />
+                            <ui:ExecuteQuery ContinueOnError="{x:Null}" DataTable="{x:Null}" TimeoutMS="{x:Null}" CommandType="Text" DisplayName="update the email address" ExistingDbConnection="[mySQL]" sap:VirtualizedContainerService.HintSize="387.2,89.6" sap2010:WorkflowViewState.IdRef="ExecuteQuery_2" Sql="update realdeal.craigslist a where id = [] set email = []">
+                              <ui:ExecuteQuery.Parameters>
+                                <InArgument x:TypeArguments="x:String" x:Key="id">[currentrow("id").ToString]</InArgument>
+                                <InArgument x:TypeArguments="x:String" x:Key="email">[currentrow("email").ToString]</InArgument>
+                              </ui:ExecuteQuery.Parameters>
+                            </ui:ExecuteQuery>
+                          </Sequence>
+                        </ActivityAction>
+                      </uix:NApplicationCard.Body>
+                      <uix:NApplicationCard.TargetApp>
+                        <uix:TargetApp Area="-9, -9, 1801, 1098" BrowserType="Edge" IconBase64="iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAAAEpSURBVDhPnZM7bgJBEEQ3RgTOkYVsAiInkBM6RyKy5IATEYOJ8BkQB+AYYGQBcuYT8LHrzdbALgsS0NLTTFfXNMxnk9N4T3oN0RczsTHM0Rq2FUPFkvgQe/F3AWp4Sl6WBoKYCkxb8SnazqFjjRo53mMTJUMXfkXLWtkaPFhrCTxoQzTEpuCv0T0sJjQvNCDwCLysaSIMBKaRPSGUn21A4LU+IJk7eXU9hPJn61C3HAKv9TkJ10RScR3tkaJ1WIiqy9Qr1jeFBhqr4stalkMTjbkGhy2IJ4GR/McjrD2GJiK3hXiIE/Ht+VK8eA7M4w/RZOx5OMR4jdG8EjWRuwVxei7pNXpP8SFB19q5h/SW0dKHRCi59invnOefMoEg7vuYsqHiDZ9zkvwDgeo/b+SipukAAAAASUVORK5CYII=" InformativeScreenshot="3e0ce22e7185c888db37408c2e866c56.jpg" Selector="&lt;html app='msedge.exe' title='Condo for sale - real estate - by owner - apartment real estate sale - craigslist' /&gt;" Title="Condo for sale - real estate - by owner - apartment real estate sale - craigslist" Url="[CurrentRow(&quot;url&quot;).ToString()]" />
+                      </uix:NApplicationCard.TargetApp>
+                    </uix:NApplicationCard>
+                    <umab:OutlookApplicationCard Account="{x:Null}" AccountMismatchBehavior="UseDefaultEmailAccount" sap2010:Annotation.AnnotationText="Finally, uses the default Outlook email account to create a draft email using, write the message, and attach the newly processed invoice sheets. The 'To' field is automatically populated with the current Outlook email address in use." DisplayName="Use Desktop Outlook App" sap:VirtualizedContainerService.HintSize="529.6,796.8" sap2010:WorkflowViewState.IdRef="OutlookApplicationCard_1">
+                      <umab:OutlookApplicationCard.Body>
+                        <ActivityAction x:TypeArguments="um:IMailQuickHandle">
+                          <ActivityAction.Argument>
+                            <DelegateInArgument x:TypeArguments="um:IMailQuickHandle" Name="Outlook" />
+                          </ActivityAction.Argument>
+                          <Sequence sap2010:Annotation.AnnotationText="User the current Outlook account to create a draft email and attach the files located within the 'Invoices' folder." DisplayName="Create a draft email with attachments and a message" sap:VirtualizedContainerService.HintSize="496,553.6" sap2010:WorkflowViewState.IdRef="Sequence_10">
+                            <sap:WorkflowViewStateService.ViewState>
+                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                              </scg:Dictionary>
+                            </sap:WorkflowViewStateService.ViewState>
+                            <umab:SendMailX Bcc="{x:Null}" Cc="{x:Null}" HtmlBodyFromText="{x:Null}" ReplyTo="{x:Null}" Account="[Outlook]" Body="[&quot;Hello!&quot; + vbLf + vbLf + &quot;I have completed pocessing &quot; + CourseEmails.Count.ToString + &quot; emails.&quot; + vbLf + vbLf + &quot;Robot&quot;]" BodyType="Text" DisplayName="Send Email" sap:VirtualizedContainerService.HintSize="433.6,397.6" sap2010:WorkflowViewState.IdRef="SendMailX_2" Importance="Normal" MaxBodyDocumentSizeMB="2" Sensitivity="Normal" Subject="Invoices Processed" To="[Outlook.SelectedAccount]" UseDocumentAsBody="False">
+                              <umab:SendMailX.Files>
+                                <scg:List x:TypeArguments="InArgument(x:String)" Capacity="4">
+                                  <InArgument x:TypeArguments="x:String">Invoices</InArgument>
+                                </scg:List>
+                              </umab:SendMailX.Files>
+                              <umab:SendMailX.HtmlBodyFromFile>
+                                <umabh:HtmlContentArgument FilePath=".data/HtmlContent0.html">
+                                  <umabh:HtmlContentArgument.RuntimeImages>
+                                    <scg:Dictionary x:TypeArguments="x:String, InArgument(x:String)" />
+                                  </umabh:HtmlContentArgument.RuntimeImages>
+                                  <umabh:HtmlContentArgument.ValueMappings>
+                                    <scg:List x:TypeArguments="umabh:HtmlValueMappingBase" Capacity="0" />
+                                  </umabh:HtmlContentArgument.ValueMappings>
+                                </umabh:HtmlContentArgument>
+                              </umab:SendMailX.HtmlBodyFromFile>
+                            </umab:SendMailX>
+                          </Sequence>
+                        </ActivityAction>
+                      </umab:OutlookApplicationCard.Body>
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                    </umab:OutlookApplicationCard>
+                  </Sequence>
+                </If.Then>
+                <If.Else>
+                  <Sequence sap:VirtualizedContainerService.HintSize="300,142.4" sap2010:WorkflowViewState.IdRef="Sequence_7">
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <umab:SendMailX Bcc="{x:Null}" Body="{x:Null}" Cc="{x:Null}" HtmlBodyFromText="{x:Null}" ReplyTo="{x:Null}" Account="[werkhardor@outlook.com]" DisplayName="Send Email" sap:VirtualizedContainerService.HintSize="256.8,52.8" sap2010:WorkflowViewState.IdRef="SendMailX_1" Importance="Normal" MaxBodyDocumentSizeMB="2" Sensitivity="Normal" Subject="[CurrentRow(&quot;url&quot;).ToString]" To="[CurrentRow(&quot;email&quot;).tostring]" UseDocumentAsBody="False">
+                      <umab:SendMailX.Files>
+                        <scg:List x:TypeArguments="InArgument(x:String)" Capacity="0" />
+                      </umab:SendMailX.Files>
+                      <umab:SendMailX.HtmlBodyFromFile>
+                        <umabh:HtmlContentArgument FilePath=".data/HtmlContent0.html">
+                          <umabh:HtmlContentArgument.RuntimeImages>
+                            <scg:Dictionary x:TypeArguments="x:String, InArgument(x:String)" />
+                          </umabh:HtmlContentArgument.RuntimeImages>
+                          <umabh:HtmlContentArgument.ValueMappings>
+                            <scg:List x:TypeArguments="umabh:HtmlValueMappingBase" Capacity="0" />
+                          </umabh:HtmlContentArgument.ValueMappings>
+                        </umabh:HtmlContentArgument>
+                      </umab:SendMailX.HtmlBodyFromFile>
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                    </umab:SendMailX>
+                  </Sequence>
+                </If.Else>
+              </If>
+            </Sequence>
+          </ActivityAction>
+        </ui:ForEachRow.Body>
+      </ui:ForEachRow>
+    </Sequence>
+    <ui:GetOutlookMailMessages Account="{x:Null}" FilterByMessageIds="{x:Null}" TimeoutMS="{x:Null}" DisplayName="Get Outlook Mail Messages for Course Invoices" Filter="[Subject] = 'Course Invoices'" GetAttachements="False" sap:VirtualizedContainerService.HintSize="745.6,24.8" sap2010:WorkflowViewState.IdRef="GetOutlookMailMessages_1" MailFolder="Inbox" MarkAsRead="False" Messages="[CourseEmails]" OnlyUnreadMessages="True" OrderByDate="NewestFirst" Top="30" />
+    <ui:LogMessage DisplayName="Log Message Emails Retrieved" sap:VirtualizedContainerService.HintSize="745.6,142.4" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;CourseEmails.Count&quot; + &quot; mail messages have been retrieved.&quot;]" />
+    <umab:ForEachEmailX MailFilter="{x:Null}" Mails="{x:Null}" DisplayName="For Each Email" sap:VirtualizedContainerService.HintSize="745.6,360.8" sap2010:WorkflowViewState.IdRef="ForEachEmailX_1" IncludeSubfolders="False" NumberOfEmailsLimit="100" RetrieveAttachments="False" UnreadOnly="True" WithAttachmentsOnly="False">
+      <umab:ForEachEmailX.Body>
+        <ActivityAction x:TypeArguments="snm:MailMessage, x:Int32">
+          <ActivityAction.Argument1>
+            <DelegateInArgument x:TypeArguments="snm:MailMessage" Name="CurrentMail" />
+          </ActivityAction.Argument1>
+          <ActivityAction.Argument2>
+            <DelegateInArgument x:TypeArguments="x:Int32" Name="CurrentIndex" />
+          </ActivityAction.Argument2>
+          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="449.6,104.8" sap2010:WorkflowViewState.IdRef="Sequence_11">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+          </Sequence>
+        </ActivityAction>
+      </umab:ForEachEmailX.Body>
+    </umab:ForEachEmailX>
+    <uix:NApplicationCard AttachMode="ByInstance" DisplayName="Use Browser Edge: orlando real estate - by owner - craigslist" sap:VirtualizedContainerService.HintSize="745.6,489.6" sap2010:WorkflowViewState.IdRef="NApplicationCard_2" InteractionMode="DebuggerApi" ScopeGuid="5a84e8ee-2521-4e22-8a2a-ef01532d2f4c" Version="V2">
+      <uix:NApplicationCard.Body>
+        <ActivityAction x:TypeArguments="x:Object">
+          <ActivityAction.Argument>
+            <DelegateInArgument x:TypeArguments="x:Object" Name="WSSessionData" />
+          </ActivityAction.Argument>
+          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="449.6,272.8" sap2010:WorkflowViewState.IdRef="Sequence_12">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <uix:NExtractData AppendResults="False" ContinueOnError="True" DisplayName="Extract Table Data" ExtractDataSettings="&lt;Table xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xmlns:xsd='http://www.w3.org/2001/XMLSchema' Type='Structured'&gt;&#xA;&#x9;&lt;Column xsi:type='DataColumn' Name='New column 0' ReferenceName='Column0'&gt;&#xA;&#x9;&#x9;&lt;IsValidName&gt;true&lt;/IsValidName&gt;&#xA;&#x9;&#x9;&lt;ValidationErrorMessage /&gt;&#xA;&#x9;&#x9;&lt;IsExtra&gt;false&lt;/IsExtra&gt;&#xA;&#x9;&#x9;&lt;CanExtractSimilar&gt;false&lt;/CanExtractSimilar&gt;&#xA;&#x9;&#x9;&lt;Format xsi:type='TextColumnFormat' /&gt;&#xA;&#x9;&lt;/Column&gt;&#xA;&lt;/Table&gt;" ExtractMetadata="&lt;extract&gt;&lt;column exact='1' name='Column0' attr='fulltext'&gt;&lt;webctrl tag='ol' idx='1' /&gt;&lt;/column&gt;&lt;/extract&gt;" sap:VirtualizedContainerService.HintSize="387.2,157.6" sap2010:WorkflowViewState.IdRef="NExtractData_1" LimitExtractionTo="None" MaximumResults="0" ScopeIdentifier="5a84e8ee-2521-4e22-8a2a-ef01532d2f4c" Version="V3">
+              <uix:NExtractData.Target>
+                <uix:TargetAnchorable DesignTimeRectangle="274, -678, 1433, 6070" DesignTimeScaleFactor="1.25" FriendlyName="'OWN YOUR'" FullSelectorArgument="&lt;webctrl id='search-results-page-1' tag='DIV' /&gt;" Guid="87dde210-8ba9-46e8-85f9-bc0caae8d521" InformativeScreenshot="739fae43d5b1a218d886a1fda963570d.png" ScopeSelectorArgument="&lt;html app='msedge.exe' title='orlando real estate - by owner - craigslist' /&gt;" SearchSteps="Selector" Version="V2" Visibility="Interactive" />
+              </uix:NExtractData.Target>
+            </uix:NExtractData>
+          </Sequence>
+        </ActivityAction>
+      </uix:NApplicationCard.Body>
+      <uix:NApplicationCard.TargetApp>
+        <uix:TargetApp Area="-9, -9, 1801, 1098" BrowserType="Edge" IconBase64="iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAAAEpSURBVDhPnZM7bgJBEEQ3RgTOkYVsAiInkBM6RyKy5IATEYOJ8BkQB+AYYGQBcuYT8LHrzdbALgsS0NLTTFfXNMxnk9N4T3oN0RczsTHM0Rq2FUPFkvgQe/F3AWp4Sl6WBoKYCkxb8SnazqFjjRo53mMTJUMXfkXLWtkaPFhrCTxoQzTEpuCv0T0sJjQvNCDwCLysaSIMBKaRPSGUn21A4LU+IJk7eXU9hPJn61C3HAKv9TkJ10RScR3tkaJ1WIiqy9Qr1jeFBhqr4stalkMTjbkGhy2IJ4GR/McjrD2GJiK3hXiIE/Ht+VK8eA7M4w/RZOx5OMR4jdG8EjWRuwVxei7pNXpP8SFB19q5h/SW0dKHRCi59invnOefMoEg7vuYsqHiDZ9zkvwDgeo/b+SipukAAAAASUVORK5CYII=" InformativeScreenshot="7d6e0444f55ad3696b8996fa81e353cf.jpg" Selector="&lt;html app='msedge.exe' title='orlando real estate - by owner - craigslist' /&gt;" Title="orlando real estate - by owner - craigslist" Url="https://orlando.craigslist.org/search/rea?max_price=200000&amp;minSqft=100&amp;min_bathrooms=1&amp;min_bedrooms=1&amp;min_price=5000&amp;purveyor=owner#search=1~list~0~8" />
+      </uix:NApplicationCard.TargetApp>
+    </uix:NApplicationCard>
+  </Sequence>
+</Activity>

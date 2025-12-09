@@ -1,0 +1,100 @@
+{
+  "name": "GetParcelInfo",
+  "projectId": "28d686bd-5235-40a1-b50b-ada84d202cd7",
+  "description": "Loops through the Zillo field, calls the the url and dwonloades information such as getting the Zestimated",
+  "main": "Main Workflows\\Main.xaml",
+  "dependencies": {
+    "UiPath.Azure.Activities": "[1.5.1]",
+    "UiPath.Database.Activities": "[1.7.1]",
+    "UiPath.DataService.Activities": "23.4.1",
+    "UiPath.Excel.Activities": "[2.21.0-preview]",
+    "UiPath.Mail.Activities": "[1.20.2]",
+    "UiPath.PDF.Activities": "[3.15.0-preview]",
+    "UiPath.Python.Activities": "[1.10.0]",
+    "UiPath.System.Activities": "[25.10.3]",
+    "UiPath.Testing.Activities": "[23.6.0-preview]",
+    "UiPath.UIAutomation.Activities": "[23.6.1-preview]",
+    "UiPath.WebAPI.Activities": "[1.16.2]"
+  },
+  "webServices": [],
+  "entitiesStores": [],
+  "schemaVersion": "4.0",
+  "studioVersion": "23.6.1.0",
+  "projectVersion": "1.0.0",
+  "runtimeOptions": {
+    "autoDispose": false,
+    "netFrameworkLazyLoading": false,
+    "isPausable": true,
+    "isAttended": false,
+    "requiresUserInteraction": true,
+    "supportsPersistence": false,
+    "workflowSerialization": "DataContract",
+    "excludedLoggedData": [
+      "Private:*",
+      "*password*"
+    ],
+    "executionType": "Workflow",
+    "readyForPiP": false,
+    "startsInPiP": false,
+    "mustRestoreAllDependencies": true,
+    "pipType": "ChildSession"
+  },
+  "designOptions": {
+    "projectProfile": "Developement",
+    "outputType": "Process",
+    "libraryOptions": {
+      "privateWorkflows": []
+    },
+    "processOptions": {
+      "ignoredFiles": []
+    },
+    "fileInfoCollection": [
+      {
+        "templateType": "Generic",
+        "fileName": ".templates\\Python template.xaml"
+      },
+      {
+        "templateType": "Generic",
+        "fileName": ".templates\\Python template - Copy (1).xaml"
+      },
+      {
+        "templateType": "Generic",
+        "fileName": ".templates\\Python simple example.xaml"
+      },
+      {
+        "templateType": "Generic",
+        "fileName": ".templates\\Python advanced example.xaml"
+      },
+      {
+        "templateType": "Generic",
+        "fileName": ".templates\\Python example.xaml"
+      }
+    ],
+    "saveToCloud": false
+  },
+  "expressionLanguage": "VisualBasic",
+  "entryPoints": [
+    {
+      "filePath": "Junk\\Process Parcel Info.xaml",
+      "uniqueId": "bc3ce48e-bbdb-470a-8478-6a661a3b161f",
+      "input": [],
+      "output": []
+    },
+    {
+      "filePath": "Junk\\Main1.xaml",
+      "uniqueId": "3bf67c18-6cb8-4cd0-9be9-ce71c4067ff0",
+      "input": [],
+      "output": []
+    },
+    {
+      "filePath": "Main Workflows\\Main.xaml",
+      "uniqueId": "72db21a8-a3ef-4abb-b514-2c32727683d0",
+      "input": [],
+      "output": []
+    }
+  ],
+  "isTemplate": false,
+  "templateProjectData": {},
+  "publishData": {},
+  "targetFramework": "Windows"
+}

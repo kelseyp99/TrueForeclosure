@@ -1,0 +1,6 @@
+{
+  "Name": "GetParcelInfo",
+  "ProjectType": "Process",
+  "Description": "Loops through the Zillo field, calls the the url and dwonloades information such as getting the Zestimated",
+  "MainFile": "Main Workflows\\Main.xaml"
+}

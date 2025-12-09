@@ -1,0 +1,79 @@
+{
+  "$schema": "https://cloud.uipath.com/draft/2024-12/entry-point",
+  "entryPoints": [
+    {
+      "filePath": "Junk\\Main1.xaml",
+      "uniqueId": "3bf67c18-6cb8-4cd0-9be9-ce71c4067ff0",
+      "type": "process",
+      "input": {
+        "type": "object",
+        "properties": {
+          "myRow": {
+            "type": "object",
+            "properties": {
+              "RowError": {
+                "type": "string"
+              },
+              "RowState": {
+                "enum": [
+                  "Detached",
+                  "Unchanged",
+                  "Added",
+                  "Deleted",
+                  "Modified"
+                ],
+                "readOnly": true
+              },
+              "Table": {
+                "type": "array",
+                "items": {
+                  "type": "object"
+                },
+                "readOnly": true
+              },
+              "ItemArray": {
+                "type": "array",
+                "items": {
+                  "type": "object"
+                }
+              },
+              "HasErrors": {
+                "type": "boolean",
+                "readOnly": true
+              }
+            }
+          }
+        },
+        "required": []
+      }
+    },
+    {
+      "filePath": "Junk\\Process Parcel Info.xaml",
+      "uniqueId": "bc3ce48e-bbdb-470a-8478-6a661a3b161f",
+      "type": "process",
+      "input": {
+        "type": "object",
+        "properties": {
+          "argument1": {
+            "type": "string"
+          }
+        },
+        "required": []
+      }
+    },
+    {
+      "filePath": "Main Workflows\\Main.xaml",
+      "uniqueId": "72db21a8-a3ef-4abb-b514-2c32727683d0",
+      "type": "process",
+      "input": {
+        "type": "object",
+        "properties": {
+          "County": {
+            "type": "string"
+          }
+        },
+        "required": []
+      }
+    }
+  ]
+}

@@ -1,0 +1,35 @@
+{
+  "Value": {
+    "Main Workflows/Download Foreclosure Data.xaml": [
+      {
+        "IsEnabled": true,
+        "Annotation": null,
+        "Id": "b6d2e41d-1b21-41a6-bd9d-8783a9928421",
+        "ActivityIdRef": "MultipleAssign_33",
+        "ActivityId": "1.1300",
+        "ActivityName": "Multiple Assign",
+        "IsTransient": false
+      },
+      {
+        "IsEnabled": true,
+        "Annotation": null,
+        "Id": "3b720bd0-d1e6-4d66-abe3-e73176192193",
+        "ActivityIdRef": "PythonScope_1",
+        "ActivityId": "1.6",
+        "ActivityName": "Python Scope",
+        "IsTransient": false
+      }
+    ],
+    "Counties/Orange/Download Orange County Foreclosures.xaml": [
+      {
+        "IsEnabled": true,
+        "Annotation": null,
+        "Id": "ab2b7a33-e65b-4858-ab83-f888bd2fc27e",
+        "ActivityIdRef": "NTypeInto_2",
+        "ActivityId": "1.375",
+        "ActivityName": "Type Into 'User Name'",
+        "IsTransient": false
+      }
+    ]
+  }
+}
