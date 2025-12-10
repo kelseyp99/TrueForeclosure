@@ -1,4 +1,4 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="Main" VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="813.6,3943.2" sap2010:WorkflowViewState.IdRef="ActivityBuilder_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:p="http://schemas.uipath.com/workflow/activities/cv" xmlns:p1="http://schemas.uipath.com/workflow/activities/ocr" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Drawing;assembly=System.Drawing.Common" xmlns:sd1="clr-namespace:System.Drawing;assembly=System.Drawing.Primitives" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:uix="http://schemas.uipath.com/workflow/activities/uix" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="Main" VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="813.6,3943.2" sap2010:WorkflowViewState.IdRef="ActivityBuilder_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:p="http://schemas.uipath.com/workflow/activities/cv" xmlns:p1="http://schemas.uipath.com/workflow/activities/ocr" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Drawing;assembly=System.Drawing.Common" xmlns:sd1="clr-namespace:System.Drawing;assembly=System.Drawing.Primitives" xmlns:uc="clr-namespace:UiPath.CV;assembly=UiPath.CV" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:uix="http://schemas.uipath.com/workflow/activities/uix" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
       <x:String>System.Activities</x:String>
@@ -48,6 +48,8 @@
       <x:String>UiPath.Shared.ObjectLibrary</x:String>
       <x:String>UiPath.CV.Activities</x:String>
       <x:String>UiPath.CV.Activities.Interfaces</x:String>
+      <x:String>UiPath.Platform.ResourceHandling</x:String>
+      <x:String>System.Activities.Runtime.Collections</x:String>
     </sco:Collection>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
@@ -121,7 +123,10 @@
       <AssemblyReference>System.Linq.Expressions</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="This workflow downloads the Orange County foreclosures&#xA;1) log in to RealForeclosure.com&#xA;2) Click &quot;ok&quot; for each caveat prompt&#xA;3) Select the &quot;Quick Search&quot; hyperlink&#xA;4) Selects the &quot;Foreclousre&quot; choice from the combo box&#xA;5) download the csv file&#xA;" DisplayName="Process Orange County" sap:VirtualizedContainerService.HintSize="694,6079" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="This workflow downloads the Orange County foreclosures&#xA;1) log in to RealForeclosure.com&#xA;2) Click &quot;ok&quot; for each caveat prompt&#xA;3) Select the &quot;Quick Search&quot; hyperlink&#xA;4) Selects the &quot;Foreclousre&quot; choice from the combo box&#xA;5) download the csv file&#xA;" DisplayName="Process Orange County" sap:VirtualizedContainerService.HintSize="1186,8057" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="x:Boolean" Name="csvExists" />
+    </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -136,13 +141,70 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:LogMessage>
-    <uix:NApplicationCard AttachMode="ByInstance" DisplayName="Use Browser Edge: RealForeclose- Orange County -Splash Page" sap:VirtualizedContainerService.HintSize="694,5804" sap2010:WorkflowViewState.IdRef="NApplicationCard_1" InteractionMode="DebuggerApi" ScopeGuid="e09c41a4-8693-49b5-9859-5d3301bfa32b" Version="V2">
+    <Sequence DisplayName="Delete ofl csv file" sap:VirtualizedContainerService.HintSize="694,57" sap2010:WorkflowViewState.IdRef="Sequence_52">
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+      <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="488,859" sap2010:WorkflowViewState.IdRef="TryCatch_1">
+        <TryCatch.Finally>
+          <Sequence DisplayName="Finally" sap:VirtualizedContainerService.HintSize="486,94" sap2010:WorkflowViewState.IdRef="Sequence_55">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+          </Sequence>
+        </TryCatch.Finally>
+        <TryCatch.Try>
+          <Sequence DisplayName="Try" sap:VirtualizedContainerService.HintSize="486,635" sap2010:WorkflowViewState.IdRef="Sequence_56">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <ui:FileExistsX DisplayName="File Exists" Exists="[csvExists]" sap:VirtualizedContainerService.HintSize="452,171" sap2010:WorkflowViewState.IdRef="FileExistsX_2" Path="C:\Users\werkhardor\Downloads\QuickSearch.csv" />
+            <If Condition="[csvExists]" sap:VirtualizedContainerService.HintSize="452,400" sap2010:WorkflowViewState.IdRef="If_8">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <If.Then>
+                <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="450,172" sap2010:WorkflowViewState.IdRef="Sequence_53">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <ui:DeleteFileX DisplayName="Delete File" sap:VirtualizedContainerService.HintSize="416,108" sap2010:WorkflowViewState.IdRef="DeleteFileX_3" Path="C:\Users\werkhardor\Downloads\QuickSearch.csv" />
+                </Sequence>
+              </If.Then>
+              <If.Else>
+                <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="450,94" sap2010:WorkflowViewState.IdRef="Sequence_54">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                </Sequence>
+              </If.Else>
+            </If>
+          </Sequence>
+        </TryCatch.Try>
+      </TryCatch>
+    </Sequence>
+    <uix:NApplicationCard AttachMode="ByInstance" DisplayName="Use Browser Edge: RealForeclose- Orange County -Splash Page" sap:VirtualizedContainerService.HintSize="694,7725" sap2010:WorkflowViewState.IdRef="NApplicationCard_1" InteractionMode="DebuggerApi" ScopeGuid="e09c41a4-8693-49b5-9859-5d3301bfa32b" Version="V2">
       <uix:NApplicationCard.Body>
         <ActivityAction x:TypeArguments="x:Object">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="x:Object" Name="WSSessionData" />
           </ActivityAction.Argument>
-          <Sequence sap2010:Annotation.AnnotationText="1) Check the &quot;logged in&quot; state&#xA;2) Log in if needed&#xA;3) If not logged in, the click &quot;ok&quot; on all subsequent prompts" sap:VirtualizedContainerService.HintSize="660,5559" sap2010:WorkflowViewState.IdRef="Sequence_37">
+          <Sequence sap2010:Annotation.AnnotationText="1) Check the &quot;logged in&quot; state&#xA;2) Log in if needed&#xA;3) If not logged in, the click &quot;ok&quot; on all subsequent prompts" sap:VirtualizedContainerService.HintSize="660,7480" sap2010:WorkflowViewState.IdRef="Sequence_37">
             <Sequence.Variables>
               <Variable x:TypeArguments="x:String" Name="loginState" />
               <Variable x:TypeArguments="x:String" Name="bannerText" />
@@ -200,7 +262,7 @@
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
             </uix:NGetAttributeGeneric>
-            <If sap2010:Annotation.AnnotationText="1) check if banner text contains the phrase &quot;Log Off&quot;&#xA;2) if not, log in" Condition="[instr(bannerText,&quot;Log Off&quot;)=0]" DisplayName="If not logged in, do so" sap:VirtualizedContainerService.HintSize="626,5265" sap2010:WorkflowViewState.IdRef="If_4">
+            <If sap2010:Annotation.AnnotationText="1) check if banner text contains the phrase &quot;Log Off&quot;&#xA;2) if not, log in" Condition="[instr(bannerText,&quot;Log Off&quot;)=0]" DisplayName="If not logged in, do so" sap:VirtualizedContainerService.HintSize="626,7186" sap2010:WorkflowViewState.IdRef="If_4">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
@@ -209,13 +271,13 @@
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
               <If.Then>
-                <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="624,4990" sap2010:WorkflowViewState.IdRef="Sequence_22">
+                <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="624,6911" sap2010:WorkflowViewState.IdRef="Sequence_22">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
-                  <Sequence DisplayName="process the webpage" sap:VirtualizedContainerService.HintSize="590,3355" sap2010:WorkflowViewState.IdRef="Sequence_11">
+                  <Sequence DisplayName="process the webpage" sap:VirtualizedContainerService.HintSize="590,5307" sap2010:WorkflowViewState.IdRef="Sequence_11">
                     <Sequence.Variables>
                       <Variable x:TypeArguments="ui:UiElement" Name="buttonElement" />
                       <Variable x:TypeArguments="x:String" Name="UserNameRealForeclose" />
@@ -263,17 +325,107 @@
                         </uix:TargetAnchorable>
                       </uix:NTypeInto.Target>
                     </uix:NTypeInto>
-                    <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="556,267" sap2010:WorkflowViewState.IdRef="CommentOut_2">
+                    <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="556,61" sap2010:WorkflowViewState.IdRef="CommentOut_4">
                       <ui:CommentOut.Body>
-                        <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="450,152" sap2010:WorkflowViewState.IdRef="Sequence_38">
+                        <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="468,753" sap2010:WorkflowViewState.IdRef="Sequence_41">
                           <sap:WorkflowViewStateService.ViewState>
                             <scg:Dictionary x:TypeArguments="x:String, x:Object">
                               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                             </scg:Dictionary>
                           </sap:WorkflowViewStateService.ViewState>
-                          <p:CvElementExistsWithDescriptor DelayScreenshotAfterScroll="{x:Null}" DesignTimeScaleFactor="{x:Null}" DisplayName="CV Element Exists" sap:VirtualizedContainerService.HintSize="416,92" sap2010:WorkflowViewState.IdRef="CvElementExistsWithDescriptor_1" NumberOfScrolls="2" ScrollDirection="Down" Version="V6" />
+                          <p:CVScope ContinueOnError="{x:Null}" DelayBefore="{x:Null}" ScopeId="{x:Null}" Server="{x:Null}" CvMethod="ElementDetection, OCR" DesignTimeCacheId="67106116-5f25-4344-83d3-6b97f8a97753" DisplayName="CV Screen Scope 'pane'" sap:VirtualizedContainerService.HintSize="434,693" sap2010:WorkflowViewState.IdRef="CVScope_1" SendOnPremData="False" Version="V6">
+                            <p:CVScope.Body>
+                              <ActivityAction x:TypeArguments="x:Object">
+                                <ActivityAction.Argument>
+                                  <DelegateInArgument x:TypeArguments="x:Object" Name="CVSessionData" />
+                                </ActivityAction.Argument>
+                                <Sequence DisplayName="Do" sap2010:WorkflowViewState.IdRef="Sequence_40">
+                                  <p:CvElementExistsWithDescriptor DelayScreenshotAfterScroll="{x:Null}" Descriptor="[&quot;Target: Text 'Restore' (246,77,48,13)&quot;]" DesignTimeCacheId="67106116-5f25-4344-83d3-6b97f8a97753" DesignTimeScaleFactor="1" DisplayName="CV Element Exists - Text" sap:VirtualizedContainerService.HintSize="400,174" sap2010:WorkflowViewState.IdRef="CvElementExistsWithDescriptor_3" InformativeScreenshot="4d0976dd79decd8efbf086ff28b50f88" NumberOfScrolls="2" ScrollDirection="None" Version="V6">
+                                    <p:CvElementExistsWithDescriptor.DesignTimeDescriptor>
+                                      <uc:CvDescriptor Id="2d741cd7-bc79-4785-8865-df87d1fab96f">
+                                        <uc:CvDescriptor.Target>
+                                          <uc:CvElementDescriptor CellExtraInfo="{x:Null}" DesignTimeArea="246, 77, 48, 13" ElementType="Text" Text="Restore" />
+                                        </uc:CvDescriptor.Target>
+                                      </uc:CvDescriptor>
+                                    </p:CvElementExistsWithDescriptor.DesignTimeDescriptor>
+                                  </p:CvElementExistsWithDescriptor>
+                                  <ui:WaitUiElementAppear FoundElement="{x:Null}" WaitActive="{x:Null}" WaitVisible="{x:Null}" DisplayName="Find Element 'push button  Restore'" sap:VirtualizedContainerService.HintSize="400,134" sap2010:WorkflowViewState.IdRef="WaitUiElementAppear_13">
+                                    <ui:WaitUiElementAppear.Target>
+                                      <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="8bfd1c5d-ddf6-472b-a6d1-22b1ba2b5960" InformativeScreenshot="de21065ffd7136bef3677ab7eba59872" Selector="&lt;wnd app='msedge.exe' cls='Chrome_WidgetWin_2' title='Restore pages' /&gt;&lt;ctrl name='Restore pages' role='alert' /&gt;&lt;ctrl name='Restore' role='push button' /&gt;">
+                                        <ui:Target.TimeoutMS>
+                                          <InArgument x:TypeArguments="x:Int32" />
+                                        </ui:Target.TimeoutMS>
+                                        <ui:Target.WaitForReady>
+                                          <InArgument x:TypeArguments="ui:WaitForReady" />
+                                        </ui:Target.WaitForReady>
+                                      </ui:Target>
+                                    </ui:WaitUiElementAppear.Target>
+                                  </ui:WaitUiElementAppear>
+                                </Sequence>
+                              </ActivityAction>
+                            </p:CVScope.Body>
+                            <p:CVScope.DesignTimeCache>
+                              <uc:CVCache CvUiElements="{x:Null}" OcrTexts="{x:Null}" DataSent="False" />
+                            </p:CVScope.DesignTimeCache>
+                            <p:CVScope.DesignTimeCacheContainer>
+                              <uc:CvCacheContainer>
+                                <uc:CvCacheContainer.Caches>
+                                  <scg:List x:TypeArguments="uc:CVCache" Capacity="1">
+                                    <uc:CVCache DataSent="False" DisplayName="Screen CV Element Exists - 'Re (Main)" Id="67106116-5f25-4344-83d3-6b97f8a97753" InformativeScreenshot="543d023fcf59aefdcd6cbcd446bfcf6e" LogicalPosition="1243, 208" OcrText="Microsoft Edge closed while you had some pages open. Restore" Position="1243, 208" ScreenshotGuid="53a56e35-c30f-4198-b326-bb3fb7efd24f" ServerVersion="0">
+                                      <uc:CVCache.CvAnchorRelations>
+                                        <scg:List x:TypeArguments="uc:AnchorRelationInfo" Capacity="0" />
+                                      </uc:CVCache.CvAnchorRelations>
+                                      <uc:CVCache.CvUiElements>
+                                        <scg:List x:TypeArguments="uc:CvElementInfo" Capacity="4">
+                                          <uc:CvElementInfo Category="Button" Region="237, 68, 68, 33" />
+                                        </scg:List>
+                                      </uc:CVCache.CvUiElements>
+                                      <uc:CVCache.OcrTexts>
+                                        <scg:List x:TypeArguments="uc:OcrTextInfo" Capacity="10">
+                                          <uc:OcrTextInfo Region="15, 11, 57, 13" Text="Microsoft" />
+                                          <uc:OcrTextInfo Region="74, 11, 29, 16" Text="Edge" />
+                                          <uc:OcrTextInfo Region="105, 11, 38, 13" Text="closed" />
+                                          <uc:OcrTextInfo Region="145, 11, 32, 13" Text="while" />
+                                          <uc:OcrTextInfo Region="178, 14, 23, 13" Text="you" />
+                                          <uc:OcrTextInfo Region="204, 11, 23, 13" Text="had" />
+                                          <uc:OcrTextInfo Region="228, 14, 34, 10" Text="some" />
+                                          <uc:OcrTextInfo Region="264, 14, 36, 13" Text="pages" />
+                                          <uc:OcrTextInfo Region="15, 32, 34, 13" Text="open." />
+                                          <uc:OcrTextInfo Region="246, 77, 48, 13" Text="Restore" />
+                                        </scg:List>
+                                      </uc:CVCache.OcrTexts>
+                                    </uc:CVCache>
+                                  </scg:List>
+                                </uc:CvCacheContainer.Caches>
+                              </uc:CvCacheContainer>
+                            </p:CVScope.DesignTimeCacheContainer>
+                            <p:CVScope.OCREngine>
+                              <ActivityFunc x:TypeArguments="sd:Image, scg:IEnumerable(scg:KeyValuePair(sd1:Rectangle, x:String))">
+                                <ActivityFunc.Argument>
+                                  <DelegateInArgument x:TypeArguments="sd:Image" Name="Image" />
+                                </ActivityFunc.Argument>
+                                <p1:UiPathScreenOCR ApiKey="{x:Null}" Endpoint="{x:Null}" Output="{x:Null}" PredictionId="{x:Null}" Text="{x:Null}" UseLocalServer="{x:Null}" ComputeSkewAngle="False" ExtractWords="True" sap:VirtualizedContainerService.HintSize="400,25" sap2010:WorkflowViewState.IdRef="UiPathScreenOCR_4" Image="[Image]" Language="en" Profile="Screen" Scale="1" Timeout="100000" />
+                              </ActivityFunc>
+                            </p:CVScope.OCREngine>
+                            <p:CVScope.Target>
+                              <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="b416b1b9-a412-4f6f-9354-953fe776813f" InformativeScreenshot="0e0ef69dd5dbcf0032e016e6cfe12cf3" Selector="&lt;wnd app='msedge.exe' cls='Chrome_WidgetWin_2' title='Restore pages' /&gt;&lt;ctrl name='Restore pages' role='alert' /&gt;&lt;ctrl idx='4' role='pane' /&gt;" WaitForReady="INTERACTIVE">
+                                <ui:Target.TimeoutMS>
+                                  <InArgument x:TypeArguments="x:Int32" />
+                                </ui:Target.TimeoutMS>
+                              </ui:Target>
+                            </p:CVScope.Target>
+                            <p:CVScope.UseLocalServer>
+                              <InArgument x:TypeArguments="x:Boolean" />
+                            </p:CVScope.UseLocalServer>
+                          </p:CVScope>
                         </Sequence>
                       </ui:CommentOut.Body>
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
                     </ui:CommentOut>
                     <ui:WaitUiElementAppear WaitActive="{x:Null}" WaitVisible="{x:Null}" DisplayName="Find the 'Submit' Button" FoundElement="[buttonElement]" sap:VirtualizedContainerService.HintSize="556,143" sap2010:WorkflowViewState.IdRef="WaitUiElementAppear_1">
                       <ui:WaitUiElementAppear.Target>
@@ -295,9 +447,9 @@
                         <InArgument x:TypeArguments="ui:UiElement">[DirectCast(buttonElement, UiPath.Core.UiElement)]</InArgument>
                       </Assign.Value>
                     </Assign>
-                    <If Condition="[not buttonElement is Nothing]" DisplayName="If the submit button was found" sap:VirtualizedContainerService.HintSize="556,1873" sap2010:WorkflowViewState.IdRef="If_2">
+                    <If Condition="[not buttonElement is Nothing]" DisplayName="If the submit button was found" sap:VirtualizedContainerService.HintSize="556,4031" sap2010:WorkflowViewState.IdRef="If_2">
                       <If.Then>
-                        <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="554,1645" sap2010:WorkflowViewState.IdRef="Sequence_3">
+                        <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="554,3803" sap2010:WorkflowViewState.IdRef="Sequence_3">
                           <Sequence.Variables>
                             <Variable x:TypeArguments="ui:UiElement" Name="nextPageElement" />
                           </Sequence.Variables>
@@ -329,14 +481,14 @@
                               </scg:Dictionary>
                             </sap:WorkflowViewStateService.ViewState>
                           </ui:LogMessage>
-                          <Sequence DisplayName="Click various caveat buttons" sap:VirtualizedContainerService.HintSize="520,1326" sap2010:WorkflowViewState.IdRef="Sequence_36">
+                          <Sequence DisplayName="Click various caveat buttons" sap:VirtualizedContainerService.HintSize="520,3484" sap2010:WorkflowViewState.IdRef="Sequence_36">
                             <sap:WorkflowViewStateService.ViewState>
                               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                 <x:Boolean x:Key="IsPinned">False</x:Boolean>
                               </scg:Dictionary>
                             </sap:WorkflowViewStateService.ViewState>
-                            <Sequence sap2010:Annotation.AnnotationText="1) find &quot;ok&quot; button&#xA;2) assign it to var&#xA;3) test if button was found&#xA;4) if so, click it" DisplayName="OK prompt 1" sap:VirtualizedContainerService.HintSize="486,968" sap2010:WorkflowViewState.IdRef="Sequence_28">
+                            <Sequence sap2010:Annotation.AnnotationText="1) find &quot;ok&quot; button&#xA;2) assign it to var&#xA;3) test if button was found&#xA;4) if so, click it" DisplayName="OK prompt 1" sap:VirtualizedContainerService.HintSize="486,1088" sap2010:WorkflowViewState.IdRef="Sequence_28">
                               <Sequence.Variables>
                                 <Variable x:TypeArguments="ui:UiElement" Name="nextPageElement" />
                                 <Variable x:TypeArguments="ui:UiElement" Name="buttonElement" />
@@ -374,9 +526,9 @@
                                   <InArgument x:TypeArguments="ui:UiElement">[nextPageElement]</InArgument>
                                 </Assign.Value>
                               </Assign>
-                              <If Condition="[not buttonElement is Nothing]" DisplayName="If can find the first&quot;ok&quot; button" sap:VirtualizedContainerService.HintSize="452,469" sap2010:WorkflowViewState.IdRef="If_3">
+                              <If Condition="[not buttonElement is Nothing]" DisplayName="If can find the first&quot;ok&quot; button" sap:VirtualizedContainerService.HintSize="452,589" sap2010:WorkflowViewState.IdRef="If_3">
                                 <If.Then>
-                                  <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="450,310" sap2010:WorkflowViewState.IdRef="Sequence_13">
+                                  <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="450,430" sap2010:WorkflowViewState.IdRef="Sequence_13">
                                     <sap:WorkflowViewStateService.ViewState>
                                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -399,10 +551,10 @@
                                         </scg:Dictionary>
                                       </sap:WorkflowViewStateService.ViewState>
                                     </uix:NClick>
-                                    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="416,52" sap2010:WorkflowViewState.IdRef="LogMessage_4" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;first 'ok' button clicked&quot;]">
+                                    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="416,172" sap2010:WorkflowViewState.IdRef="LogMessage_4" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;first 'ok' button clicked&quot;]">
                                       <sap:WorkflowViewStateService.ViewState>
                                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                           <x:Boolean x:Key="IsPinned">False</x:Boolean>
                                         </scg:Dictionary>
                                       </sap:WorkflowViewStateService.ViewState>
@@ -421,10 +573,10 @@
                                 </If.Else>
                               </If>
                             </Sequence>
-                            <Sequence sap2010:Annotation.AnnotationText="1) find &quot;ok&quot; button&#xA;2) assign it to var&#xA;3) test if button was found&#xA;4) if so, click it" DisplayName="OK prompt 2" sap:VirtualizedContainerService.HintSize="486,138" sap2010:WorkflowViewState.IdRef="Sequence_31">
+                            <Sequence sap2010:Annotation.AnnotationText="1) find &quot;ok&quot; button&#xA;2) assign it to var&#xA;3) test if button was found&#xA;4) if so, click it" DisplayName="OK prompt 2" sap:VirtualizedContainerService.HintSize="486,1157" sap2010:WorkflowViewState.IdRef="Sequence_31">
                               <sap:WorkflowViewStateService.ViewState>
                                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                   <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
                                   <x:Boolean x:Key="IsPinned">False</x:Boolean>
                                 </scg:Dictionary>
@@ -455,15 +607,15 @@
                                   <InArgument x:TypeArguments="ui:UiElement">[nextPageElement]</InArgument>
                                 </Assign.Value>
                               </Assign>
-                              <If Condition="[not buttonElement is Nothing]" DisplayName="If can find the second &quot;ok&quot; button" sap:VirtualizedContainerService.HintSize="452,538" sap2010:WorkflowViewState.IdRef="If_5">
+                              <If Condition="[not buttonElement is Nothing]" DisplayName="If can find the second &quot;ok&quot; button" sap:VirtualizedContainerService.HintSize="452,658" sap2010:WorkflowViewState.IdRef="If_5">
                                 <If.Then>
-                                  <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="449.6,309.6" sap2010:WorkflowViewState.IdRef="Sequence_29">
+                                  <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="450,430" sap2010:WorkflowViewState.IdRef="Sequence_29">
                                     <sap:WorkflowViewStateService.ViewState>
                                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                       </scg:Dictionary>
                                     </sap:WorkflowViewStateService.ViewState>
-                                    <uix:NClick ActivateBefore="True" ClickType="Single" DelayAfter="2" DelayBefore="2" DisplayName="Click 'ok'" sap:VirtualizedContainerService.HintSize="416,193.6" sap2010:WorkflowViewState.IdRef="NClick_14" KeyModifiers="None" MouseButton="Left" OutUiElement="[nextPageElement]" ScopeIdentifier="e09c41a4-8693-49b5-9859-5d3301bfa32b" Version="V3">
+                                    <uix:NClick ActivateBefore="True" ClickType="Single" DelayAfter="2" DelayBefore="2" DisplayName="Click 'ok'" sap:VirtualizedContainerService.HintSize="416,194" sap2010:WorkflowViewState.IdRef="NClick_14" KeyModifiers="None" MouseButton="Left" OutUiElement="[nextPageElement]" ScopeIdentifier="e09c41a4-8693-49b5-9859-5d3301bfa32b" Version="V3">
                                       <uix:NClick.Target>
                                         <uix:TargetAnchorable BrowserURL="https://orange.realforeclose.com/index.cfm" CvElementArea="837, 315, 40, 29" CvTextArea="846, 321, 21, 15" CvTextArgument="ok" CvType="Button" DesignTimeRectangle="840, 316, 37, 27" DesignTimeScaleFactor="1.25" ElementType="Button" FriendlyName="'ok'" FullSelectorArgument="&lt;webctrl id='FRM_DOC' tableRow='1' tag='TABLE' /&gt;&lt;webctrl id='BNOTACC' tableRow='2' tag='INPUT' /&gt;" FuzzySelectorArgument="&lt;webctrl id='FRM_DOC' tag='TABLE' /&gt;&lt;webctrl id='BNOTACC' type='button' tag='INPUT' class='' aaname='ok' check:text='ok' /&gt;" Guid="b607681b-2d06-4f1a-9da1-df808607544f" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAACkAAAAfCAYAAAB6Q+RGAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAAAEoSURBVFhH7ZdBDoMgEEW5DBfiMB6BG7Tbds9pOIkb03Q39QsoKFYbqGjC4iXCQHiMAwns9e7o7FTJXASSz+eD7vcbNU1TBKwNB98JjJIIKqWobduiwGEuOkpiF7FJJYBLVBLpjk0oAVyqZA4OkdSSE2OCVCS2hyrpOImkIsFYL+LgJPUUX0pqktyM5VKP49ZIl9SSOMTEdPEbKUZC+W0n6QTDjXwjWVKJfkEuSQf9VsT2T5K/C4JESbuol0WHnz33LbAhL8N7SZS0tbhL0gga/Prc5tBMDmKRGt4iUdLW5CIzazVp4qZ94MH5/XQDWyaLAxcnXXJgfk+GmV1K9ihhxu747Zkk/0uVzEWVzMWq5CUeYpd40gIEsQukuwRYey4IAsmzcgHJjj6ZKpzLWfj3mAAAAABJRU5ErkJggg==" InformativeScreenshot="1d303b22d5ef4468bcfc869897588b36.png" ScopeSelectorArgument="&lt;html app='msedge.exe' title='RealForeclose- Orange County -Notice and alert page' /&gt;" SearchSteps="FuzzySelector, Image, CV" Version="V2" Visibility="Interactive">
                                           <uix:TargetAnchorable.Anchors>
@@ -480,10 +632,10 @@
                                         </scg:Dictionary>
                                       </sap:WorkflowViewStateService.ViewState>
                                     </uix:NClick>
-                                    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="416,52" sap2010:WorkflowViewState.IdRef="LogMessage_8" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;first 'ok' button clicked&quot;]">
+                                    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="416,172" sap2010:WorkflowViewState.IdRef="LogMessage_8" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;second 'ok' button clicked&quot;]">
                                       <sap:WorkflowViewStateService.ViewState>
                                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                           <x:Boolean x:Key="IsPinned">False</x:Boolean>
                                         </scg:Dictionary>
                                       </sap:WorkflowViewStateService.ViewState>
@@ -491,7 +643,7 @@
                                   </Sequence>
                                 </If.Then>
                                 <If.Else>
-                                  <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="449.6,94.4" sap2010:WorkflowViewState.IdRef="Sequence_30">
+                                  <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="450,94" sap2010:WorkflowViewState.IdRef="Sequence_30">
                                     <sap:WorkflowViewStateService.ViewState>
                                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -501,10 +653,10 @@
                                 </If.Else>
                               </If>
                             </Sequence>
-                            <Sequence sap2010:Annotation.AnnotationText="1) find &quot;ok&quot; button&#xA;2) assign it to var&#xA;3) test if button was found&#xA;4) if so, click it" DisplayName="OK prompt 3" sap:VirtualizedContainerService.HintSize="486,129" sap2010:WorkflowViewState.IdRef="Sequence_34">
+                            <Sequence sap2010:Annotation.AnnotationText="1) find &quot;ok&quot; button&#xA;2) assign it to var&#xA;3) test if button was found&#xA;4) if so, click it" DisplayName="OK prompt 3" sap:VirtualizedContainerService.HintSize="486,1148" sap2010:WorkflowViewState.IdRef="Sequence_34">
                               <sap:WorkflowViewStateService.ViewState>
                                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                   <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
                                   <x:Boolean x:Key="IsPinned">False</x:Boolean>
                                 </scg:Dictionary>
@@ -535,15 +687,15 @@
                                   <InArgument x:TypeArguments="ui:UiElement">[nextPageElement]</InArgument>
                                 </Assign.Value>
                               </Assign>
-                              <If Condition="[not buttonElement is Nothing]" DisplayName="If can find the third&quot;ok&quot; button" sap:VirtualizedContainerService.HintSize="452,538" sap2010:WorkflowViewState.IdRef="If_6">
+                              <If Condition="[not buttonElement is Nothing]" DisplayName="If can find the third&quot;ok&quot; button" sap:VirtualizedContainerService.HintSize="452,658" sap2010:WorkflowViewState.IdRef="If_6">
                                 <If.Then>
-                                  <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="449.6,309.6" sap2010:WorkflowViewState.IdRef="Sequence_32">
+                                  <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="450,430" sap2010:WorkflowViewState.IdRef="Sequence_32">
                                     <sap:WorkflowViewStateService.ViewState>
                                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                       </scg:Dictionary>
                                     </sap:WorkflowViewStateService.ViewState>
-                                    <uix:NClick ActivateBefore="True" ClickType="Single" DelayAfter="2" DelayBefore="2" DisplayName="Click 'OK'" sap:VirtualizedContainerService.HintSize="416,193.6" sap2010:WorkflowViewState.IdRef="NClick_15" KeyModifiers="None" MouseButton="Left" OutUiElement="[nextPageElement]" ScopeIdentifier="e09c41a4-8693-49b5-9859-5d3301bfa32b" Version="V3">
+                                    <uix:NClick ActivateBefore="True" ClickType="Single" DelayAfter="2" DelayBefore="2" DisplayName="Click 'OK'" sap:VirtualizedContainerService.HintSize="416,194" sap2010:WorkflowViewState.IdRef="NClick_15" KeyModifiers="None" MouseButton="Left" OutUiElement="[nextPageElement]" ScopeIdentifier="e09c41a4-8693-49b5-9859-5d3301bfa32b" Version="V3">
                                       <uix:NClick.Target>
                                         <uix:TargetAnchorable BrowserURL="https://orange.realforeclose.com/index.cfm" CvElementArea="833, 315, 48, 29" CvTextArea="844, 320, 26, 16" CvTextArgument="OK" CvType="Button" DesignTimeRectangle="836, 316, 43, 27" DesignTimeScaleFactor="1.25" ElementType="Button" FriendlyName="'OK'" FullSelectorArgument="&lt;webctrl id='FRM_DOC' tableRow='1' tag='TABLE' /&gt;&lt;webctrl id='BNOTACC' tableRow='2' tag='INPUT' /&gt;" FuzzySelectorArgument="&lt;webctrl id='FRM_DOC' tag='TABLE' /&gt;&lt;webctrl id='BNOTACC' type='button' tag='INPUT' class='' aaname='OK' check:text='OK' /&gt;" Guid="8a525758-76da-42d7-855d-68f7b090605b" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAC8AAAAfCAYAAAB3XZQBAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAAAFVSURBVFhH7ZixrYQwDIapmYFNWIQFWIGWKaB911EwBGMwAAPQnJ5e56f/JJ98IQ5RclKIRPGJI5fgz7FBguL370m5csun4kP+8fihcRyp67pLAjc4HuQxOM8z7ft+aeDICbzlh2GwTr4icP2QR1lsE68IXG/5FHxFfts2quuaiqJ4U1UVret6mNs0jfpf3/fOtSbR8tM0vQJCSo6zCI5yXJPn+eZ1XETJL8tCZVmqATkxHHnMJh8iDqLkEdRVYm4ngN8YM+W1CvkQLG8TswEpVAdVwrmUjxEHwfIIDomzUmvybdu+xLOTl9J8Lu8LX4LlY9pG7jZvAreSXHtGsDyAgCuoLUFuG7mGn1pnG2ESJX/WOr6PSoCNkBXxIUoesKCZgCajyXOVzGRdRMsDGZjR2kmTB1xJ3wS+Ip+KWz4Vt3wqDvJZv4Bn/emDE8jyo1OOZCz/pH880gOioDCRyQAAAABJRU5ErkJggg==" InformativeScreenshot="2622110a7d769dc369c65a0ca8e4c96e.png" ScopeSelectorArgument="&lt;html app='msedge.exe' title='RealForeclose- Orange County -Notice and alert page' /&gt;" SearchSteps="FuzzySelector, Image, CV" Version="V2" Visibility="Interactive">
                                           <uix:TargetAnchorable.Anchors>
@@ -560,10 +712,10 @@
                                         </scg:Dictionary>
                                       </sap:WorkflowViewStateService.ViewState>
                                     </uix:NClick>
-                                    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="416,52" sap2010:WorkflowViewState.IdRef="LogMessage_9" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;first 'ok' button clicked&quot;]">
+                                    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="416,172" sap2010:WorkflowViewState.IdRef="LogMessage_9" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;third 'ok' button clicked&quot;]">
                                       <sap:WorkflowViewStateService.ViewState>
                                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                           <x:Boolean x:Key="IsPinned">False</x:Boolean>
                                         </scg:Dictionary>
                                       </sap:WorkflowViewStateService.ViewState>
@@ -571,7 +723,7 @@
                                   </Sequence>
                                 </If.Then>
                                 <If.Else>
-                                  <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="449.6,94.4" sap2010:WorkflowViewState.IdRef="Sequence_33">
+                                  <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="450,94" sap2010:WorkflowViewState.IdRef="Sequence_33">
                                     <sap:WorkflowViewStateService.ViewState>
                                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -595,55 +747,129 @@
                       </If.Else>
                     </If>
                   </Sequence>
-                  <Sequence DisplayName="Get and Save the csv file" sap:VirtualizedContainerService.HintSize="590,1571" sap2010:WorkflowViewState.IdRef="Sequence_35">
+                  <Sequence DisplayName="Get and Save the csv file" sap:VirtualizedContainerService.HintSize="590,1540" sap2010:WorkflowViewState.IdRef="Sequence_35">
                     <Sequence.Variables>
                       <Variable x:TypeArguments="ui:UiElement" Name="nextPageElement" />
                       <Variable x:TypeArguments="ui:UiElement" Name="buttonElement" />
+                      <Variable x:TypeArguments="x:Boolean" Name="csvExists" />
                     </Sequence.Variables>
                     <sap:WorkflowViewStateService.ViewState>
                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
                         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                       </scg:Dictionary>
                     </sap:WorkflowViewStateService.ViewState>
-                    <ui:ClickOCRText ContinueOnError="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click 'QuickSearch'" sap:VirtualizedContainerService.HintSize="486,262" sap2010:WorkflowViewState.IdRef="ClickOCRText_3" KeyModifiers="None" MouseButton="BTN_LEFT" Occurrence="1" Text="Quick Search">
-                      <ui:ClickOCRText.CursorPosition>
-                        <ui:CursorPosition Position="Center">
-                          <ui:CursorPosition.OffsetX>
-                            <InArgument x:TypeArguments="x:Int32" />
-                          </ui:CursorPosition.OffsetX>
-                          <ui:CursorPosition.OffsetY>
-                            <InArgument x:TypeArguments="x:Int32" />
-                          </ui:CursorPosition.OffsetY>
-                        </ui:CursorPosition>
-                      </ui:ClickOCRText.CursorPosition>
-                      <ui:ClickOCRText.OCREngine>
-                        <ActivityFunc x:TypeArguments="sd:Image, scg:IEnumerable(scg:KeyValuePair(sd1:Rectangle, x:String))">
-                          <ActivityFunc.Argument>
-                            <DelegateInArgument x:TypeArguments="sd:Image" Name="Image" />
-                          </ActivityFunc.Argument>
-                          <p1:UiPathScreenOCR ApiKey="{x:Null}" Endpoint="{x:Null}" Output="{x:Null}" PredictionId="{x:Null}" Text="{x:Null}" UseLocalServer="{x:Null}" ComputeSkewAngle="False" DisplayName="UiPath Screen OCR" ExtractWords="True" sap:VirtualizedContainerService.HintSize="300,25" sap2010:WorkflowViewState.IdRef="UiPathScreenOCR_3" Image="[Image]" Language="auto" Profile="Screen" Scale="1" Timeout="100000" />
-                        </ActivityFunc>
-                      </ui:ClickOCRText.OCREngine>
-                      <ui:ClickOCRText.Target>
-                        <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="498ae7d8-2d70-4195-9e52-703b281bff3f" InformativeScreenshot="4b027de9515d21ad18c13d2dd5a981fc" Selector="&lt;webctrl id='MAIN_TBL' tag='TABLE' /&gt;&lt;webctrl aaname='Quick Search' class='LN_MT' parentid='ln_menu' tableRow='1' tag='SPAN' /&gt;">
-                          <ui:Target.TimeoutMS>
-                            <InArgument x:TypeArguments="x:Int32" />
-                          </ui:Target.TimeoutMS>
-                          <ui:Target.WaitForReady>
-                            <InArgument x:TypeArguments="ui:WaitForReady" />
-                          </ui:Target.WaitForReady>
-                        </ui:Target>
-                      </ui:ClickOCRText.Target>
+                    <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="416,61" sap2010:WorkflowViewState.IdRef="CommentOut_6">
+                      <ui:CommentOut.Body>
+                        <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="450,309" sap2010:WorkflowViewState.IdRef="Sequence_44">
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                          <ui:ClickOCRText ContinueOnError="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" ClickType="CLICK_DOUBLE" DisplayName="Click OCR Text 'SPAN'" sap:VirtualizedContainerService.HintSize="416,249" sap2010:WorkflowViewState.IdRef="ClickOCRText_4" KeyModifiers="None" MouseButton="BTN_LEFT" Occurrence="1" Text="Quick Search">
+                            <ui:ClickOCRText.CursorPosition>
+                              <ui:CursorPosition Position="Center">
+                                <ui:CursorPosition.OffsetX>
+                                  <InArgument x:TypeArguments="x:Int32" />
+                                </ui:CursorPosition.OffsetX>
+                                <ui:CursorPosition.OffsetY>
+                                  <InArgument x:TypeArguments="x:Int32" />
+                                </ui:CursorPosition.OffsetY>
+                              </ui:CursorPosition>
+                            </ui:ClickOCRText.CursorPosition>
+                            <ui:ClickOCRText.OCREngine>
+                              <ActivityFunc x:TypeArguments="sd:Image, scg:IEnumerable(scg:KeyValuePair(sd1:Rectangle, x:String))">
+                                <ActivityFunc.Argument>
+                                  <DelegateInArgument x:TypeArguments="sd:Image" Name="Image" />
+                                </ActivityFunc.Argument>
+                                <p1:UiPathScreenOCR ApiKey="{x:Null}" Endpoint="{x:Null}" Output="{x:Null}" PredictionId="{x:Null}" Text="{x:Null}" UseLocalServer="{x:Null}" ComputeSkewAngle="False" DisplayName="UiPath Screen OCR" ExtractWords="True" sap:VirtualizedContainerService.HintSize="300,25" sap2010:WorkflowViewState.IdRef="UiPathScreenOCR_5" Image="[Image]" Language="auto" Profile="Screen" Scale="1" Timeout="100000" />
+                              </ActivityFunc>
+                            </ui:ClickOCRText.OCREngine>
+                            <ui:ClickOCRText.Target>
+                              <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="c2475025-f49b-4e25-9aed-49a9af1d3d29" InformativeScreenshot="9f52e852b750f9fd2b7861b78aab6b7a" Selector="&lt;webctrl id='MAIN_TBL' tag='TABLE' /&gt;&lt;webctrl aaname='Quick Search' class='LN_MT' parentid='ln_menu' tableRow='1' tag='SPAN' /&gt;">
+                                <ui:Target.TimeoutMS>
+                                  <InArgument x:TypeArguments="x:Int32" />
+                                </ui:Target.TimeoutMS>
+                                <ui:Target.WaitForReady>
+                                  <InArgument x:TypeArguments="ui:WaitForReady" />
+                                </ui:Target.WaitForReady>
+                              </ui:Target>
+                            </ui:ClickOCRText.Target>
+                          </ui:ClickOCRText>
+                        </Sequence>
+                      </ui:CommentOut.Body>
                       <sap:WorkflowViewStateService.ViewState>
                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
                           <x:Boolean x:Key="IsPinned">False</x:Boolean>
                         </scg:Dictionary>
                       </sap:WorkflowViewStateService.ViewState>
-                    </ui:ClickOCRText>
-                    <ui:WaitUiElementAppear WaitActive="{x:Null}" WaitVisible="{x:Null}" DisplayName="Focus Auction Type combo box" FoundElement="[nextPageElement]" sap:VirtualizedContainerService.HintSize="486,143" sap2010:WorkflowViewState.IdRef="WaitUiElementAppear_11">
+                    </ui:CommentOut>
+                    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="416,61" sap2010:WorkflowViewState.IdRef="LogMessage_12" Level="Info" Message="[&quot;'Quick Search' clicked&quot;]">
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                    </ui:LogMessage>
+                    <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="416,61" sap2010:WorkflowViewState.IdRef="CommentOut_5">
+                      <ui:CommentOut.Body>
+                        <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="450,309" sap2010:WorkflowViewState.IdRef="Sequence_42">
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                          <ui:ClickOCRText ContinueOnError="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click 'QuickSearch'" sap:VirtualizedContainerService.HintSize="416,249" sap2010:WorkflowViewState.IdRef="ClickOCRText_3" KeyModifiers="None" MouseButton="BTN_LEFT" Occurrence="1" Text="Quick Search">
+                            <ui:ClickOCRText.CursorPosition>
+                              <ui:CursorPosition Position="Center">
+                                <ui:CursorPosition.OffsetX>
+                                  <InArgument x:TypeArguments="x:Int32" />
+                                </ui:CursorPosition.OffsetX>
+                                <ui:CursorPosition.OffsetY>
+                                  <InArgument x:TypeArguments="x:Int32" />
+                                </ui:CursorPosition.OffsetY>
+                              </ui:CursorPosition>
+                            </ui:ClickOCRText.CursorPosition>
+                            <ui:ClickOCRText.OCREngine>
+                              <ActivityFunc x:TypeArguments="sd:Image, scg:IEnumerable(scg:KeyValuePair(sd1:Rectangle, x:String))">
+                                <ActivityFunc.Argument>
+                                  <DelegateInArgument x:TypeArguments="sd:Image" Name="Image" />
+                                </ActivityFunc.Argument>
+                                <p1:UiPathScreenOCR ApiKey="{x:Null}" Endpoint="{x:Null}" Output="{x:Null}" PredictionId="{x:Null}" Text="{x:Null}" UseLocalServer="{x:Null}" ComputeSkewAngle="False" DisplayName="UiPath Screen OCR" ExtractWords="True" sap:VirtualizedContainerService.HintSize="300,25" sap2010:WorkflowViewState.IdRef="UiPathScreenOCR_3" Image="[Image]" Language="auto" Profile="Screen" Scale="1" Timeout="100000" />
+                              </ActivityFunc>
+                            </ui:ClickOCRText.OCREngine>
+                            <ui:ClickOCRText.Target>
+                              <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="498ae7d8-2d70-4195-9e52-703b281bff3f" InformativeScreenshot="4b027de9515d21ad18c13d2dd5a981fc" Selector="&lt;webctrl id='MAIN_TBL' tag='TABLE' /&gt;&lt;webctrl aaname='Quick Search' class='LN_MT' parentid='ln_menu' tableRow='1' tag='SPAN' /&gt;">
+                                <ui:Target.TimeoutMS>
+                                  <InArgument x:TypeArguments="x:Int32" />
+                                </ui:Target.TimeoutMS>
+                                <ui:Target.WaitForReady>
+                                  <InArgument x:TypeArguments="ui:WaitForReady" />
+                                </ui:Target.WaitForReady>
+                              </ui:Target>
+                            </ui:ClickOCRText.Target>
+                            <sap:WorkflowViewStateService.ViewState>
+                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                              </scg:Dictionary>
+                            </sap:WorkflowViewStateService.ViewState>
+                          </ui:ClickOCRText>
+                        </Sequence>
+                      </ui:CommentOut.Body>
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                    </ui:CommentOut>
+                    <uix:NGoToUrl DisplayName="Go To URL" sap:VirtualizedContainerService.HintSize="416,119" sap2010:WorkflowViewState.IdRef="NGoToUrl_1" Url="https://orange.realforeclose.com/index.cfm?zaction=admin&amp;zmethod=REPORT&amp;Report_id=33" Version="V3" />
+                    <ui:WaitUiElementAppear WaitActive="{x:Null}" WaitVisible="{x:Null}" DisplayName="Focus Auction Type combo box" FoundElement="[nextPageElement]" sap:VirtualizedContainerService.HintSize="416,143" sap2010:WorkflowViewState.IdRef="WaitUiElementAppear_14">
                       <ui:WaitUiElementAppear.Target>
-                        <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="758837a3-6256-46a6-8837-e59851bf20ad" InformativeScreenshot="cc0ad96509c5da91e7872c0d76172d56" Selector="&lt;webctrl id='MAIN_TBL' tag='TABLE' /&gt;&lt;webctrl id='AUCT_TYPE' tableRow='1' tag='SELECT' /&gt;">
+                        <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="758837a3-6256-46a6-8837-e59851bf20ad" InformativeScreenshot="e471b3710dfb7ea7085e9c1e335fcb3d" Selector="&lt;webctrl id='MAIN_TBL' tag='TABLE' /&gt;&lt;webctrl id='AUCT_TYPE' tableRow='1' tag='SELECT' /&gt;">
                           <ui:Target.TimeoutMS>
                             <InArgument x:TypeArguments="x:Int32" />
                           </ui:Target.TimeoutMS>
@@ -659,7 +885,7 @@
                         </scg:Dictionary>
                       </sap:WorkflowViewStateService.ViewState>
                     </ui:WaitUiElementAppear>
-                    <uix:NSelectItem DisplayName="Select Item 'Auction Type'" sap:VirtualizedContainerService.HintSize="486,198" sap2010:WorkflowViewState.IdRef="NSelectItem_3" Item="Foreclosure" OutUiElement="[nextPageElement]" ScopeIdentifier="e09c41a4-8693-49b5-9859-5d3301bfa32b" Version="V3">
+                    <uix:NSelectItem DisplayName="Select Item 'Auction Type'" sap:VirtualizedContainerService.HintSize="416,198" sap2010:WorkflowViewState.IdRef="NSelectItem_3" Item="Foreclosure" OutUiElement="[nextPageElement]" ScopeIdentifier="e09c41a4-8693-49b5-9859-5d3301bfa32b" Version="V3">
                       <uix:NSelectItem.Items>
                         <scg:List x:TypeArguments="x:String" Capacity="3">
                           <x:String>Choose Type</x:String>
@@ -670,7 +896,7 @@
                       <uix:NSelectItem.Target>
                         <uix:TargetAnchorable BrowserURL="https://orange.realforeclose.com/index.cfm?zaction=admin&amp;zmethod=REPORT&amp;Report_id=33" CvTextArgument="Choose Type" CvType="Text" DesignTimeRectangle="26, 257, 167, 15" DesignTimeScaleFactor="1" ElementType="DropDown" FriendlyName="'Choose Type'" FullSelectorArgument="&lt;webctrl id='MAIN_TBL' tag='TABLE' /&gt;&lt;webctrl id='AUCT_TYPE' tableRow='1' tag='SELECT' /&gt;" FuzzySelectorArgument="&lt;webctrl id='MAIN_TBL' tag='TABLE' /&gt;&lt;webctrl id='AUCT_TYPE' type='' tag='SELECT' class='filter' aaname='' /&gt;" Guid="11ba0424-8599-4859-85de-ba54a19bd49d" InformativeScreenshot="bce0bc0aac7ce741bdbbc6f47366c84f.png" ScopeSelectorArgument="&lt;html app='msedge.exe' title='RealForeclose- Orange County -Report Viewer' /&gt;" SearchSteps="FuzzySelector" Version="V2" Visibility="Interactive">
                           <uix:TargetAnchorable.Anchors>
-                            <scg:List x:TypeArguments="uix:ITarget" Capacity="4">
+                            <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
                               <uix:Target CvTextArgument="Auction Type:" CvType="Text" DesignTimeRectangle="21, 238, 167, 16" ElementType="Text" FriendlyName="'Auction Type'" FullSelectorArgument="&lt;webctrl id='MAIN_TBL' tag='TABLE' /&gt;&lt;webctrl id='auctionType' tableRow='1' tag='DIV' /&gt;" FuzzySelectorArgument="&lt;webctrl id='MAIN_TBL' tag='TABLE' /&gt;&lt;webctrl id='auctionType' type='' tag='DIV' class='ts_lbl' aaname='Auction Type:' check:innerText='Auction Type:' /&gt;" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAKsAAAAUCAYAAADydM25AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAIvSURBVGhD7ZjNkYMwDEaphXbSx3aQG/d0QRVpgHNqSFrxYgnDpx/ITALZsOjwZsDGlomeBaS63x8pCPZAyBrshpA12A0ha7AbQtZgN8zIek2n6idVdZs6t/81uuacqtN1PG9PfQw4X4WuTXVe+xxrxws+hisrS3UhYU+t7X8VLev23FJTr3sPwd/hyDol2Kt8JJyouFyFUQgaN1azS2rLuNI2jNfzi2uGcThn3bRc8QeeS+jI2l7M3HhPHOdK4zjOOTUdjC/Xj+vAfo5XNzdxfbAOVlZ6jA7JfJJYbpOy6n48p2OQE2VlAaZY+pw3wCSG7vfxKqveXPIajgP99BuouHj/zm8UbIORFQXyKoVJlki+rbIIjXVl9cbJ2HJdPbSpbNWTeLKquXBz6j4C15HXaWPmMVFNt0fJapOh5VyU9YlAs7LOjEMJjERvyErVsNxDPlZr0uLJdfbHDiHr9ghZSSYnEZmS8H8hK2zKPC/2Y0xsW1pn8BlAVvnY1e1FlEVZxbFlVlZ3nFzPurIWKfMHm3zfNHHEOpbvL9iWSdal5ONHhPfBAQk0MsPYeVnLPJM4+nxtWXldWswhDs6L996j1xUCf45RVkqSqJgIJ0RUuZxoauO/eTBZ2C8ST4LlNk62FpBFKONQCHvt27LOSMZx+D9ms368ZuzHOeTTIFgX9YF1JLKsckNkzKYIvobjypof746UIev3ckBZ+VGtXzMKIev3cuDXgGBvhKzBTnikXwq67UxnI+AdAAAAAElFTkSuQmCC" SearchSteps="FuzzySelector, Image, CV" />
                             </scg:List>
                           </uix:TargetAnchorable.Anchors>
@@ -683,7 +909,7 @@
                         </scg:Dictionary>
                       </sap:WorkflowViewStateService.ViewState>
                     </uix:NSelectItem>
-                    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="486,61" sap2010:WorkflowViewState.IdRef="LogMessage_10" Message="[&quot;selected 'FORECLOSURES' from combo box&quot;]">
+                    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="416,61" sap2010:WorkflowViewState.IdRef="LogMessage_10" Message="[&quot;selected 'FORECLOSURES' from combo box&quot;]">
                       <sap:WorkflowViewStateService.ViewState>
                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
                           <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -691,26 +917,109 @@
                         </scg:Dictionary>
                       </sap:WorkflowViewStateService.ViewState>
                     </ui:LogMessage>
-                    <ui:WaitUiElementAppear WaitActive="{x:Null}" WaitVisible="{x:Null}" sap2010:Annotation.AnnotationText="find on the butotn that seraches for hte choices in the combo box" DisplayName="Find Element 'Search' " FoundElement="[buttonElement]" sap:VirtualizedContainerService.HintSize="486,188" sap2010:WorkflowViewState.IdRef="WaitUiElementAppear_12">
-                      <ui:WaitUiElementAppear.Target>
-                        <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="1363197a-9652-44e5-b2a3-4aea36e44505" InformativeScreenshot="284d9a173c2154c2e6afe7bf1ea6c67e" Selector="&lt;webctrl id='MAIN_TBL' tag='TABLE' /&gt;&lt;webctrl id='testBut' tableRow='1' tag='INPUT' /&gt;">
-                          <ui:Target.TimeoutMS>
-                            <InArgument x:TypeArguments="x:Int32" />
-                          </ui:Target.TimeoutMS>
-                          <ui:Target.WaitForReady>
-                            <InArgument x:TypeArguments="ui:WaitForReady" />
-                          </ui:Target.WaitForReady>
-                        </ui:Target>
-                      </ui:WaitUiElementAppear.Target>
+                    <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="416,61" sap2010:WorkflowViewState.IdRef="CommentOut_9">
+                      <ui:CommentOut.Body>
+                        <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="450,235" sap2010:WorkflowViewState.IdRef="Sequence_48">
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                          <ui:WaitUiElementAppear WaitActive="{x:Null}" WaitVisible="{x:Null}" sap2010:Annotation.AnnotationText="find on the butotn that seraches for hte choices in the combo box" DisplayName="Find Element 'Search' " FoundElement="[buttonElement]" sap:VirtualizedContainerService.HintSize="416,175" sap2010:WorkflowViewState.IdRef="WaitUiElementAppear_12">
+                            <ui:WaitUiElementAppear.Target>
+                              <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="1363197a-9652-44e5-b2a3-4aea36e44505" InformativeScreenshot="c9059a53ca52f3d7ee017582dc4d54e3" Selector="&lt;webctrl id='MAIN_TBL' tag='TABLE' /&gt;&lt;webctrl id='testBut' tableRow='1' tag='INPUT' /&gt;">
+                                <ui:Target.TimeoutMS>
+                                  <InArgument x:TypeArguments="x:Int32" />
+                                </ui:Target.TimeoutMS>
+                                <ui:Target.WaitForReady>
+                                  <InArgument x:TypeArguments="ui:WaitForReady" />
+                                </ui:Target.WaitForReady>
+                              </ui:Target>
+                            </ui:WaitUiElementAppear.Target>
+                            <sap:WorkflowViewStateService.ViewState>
+                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                              </scg:Dictionary>
+                            </sap:WorkflowViewStateService.ViewState>
+                          </ui:WaitUiElementAppear>
+                        </Sequence>
+                      </ui:CommentOut.Body>
                       <sap:WorkflowViewStateService.ViewState>
                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
                           <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
                         </scg:Dictionary>
                       </sap:WorkflowViewStateService.ViewState>
-                    </ui:WaitUiElementAppear>
-                    <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="486,382" sap2010:WorkflowViewState.IdRef="CommentOut_3">
+                    </ui:CommentOut>
+                    <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'Search Report'" sap:VirtualizedContainerService.HintSize="416,194" sap2010:WorkflowViewState.IdRef="NClick_18" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="e09c41a4-8693-49b5-9859-5d3301bfa32b" Version="V3">
+                      <uix:NClick.Target>
+                        <uix:TargetAnchorable BrowserURL="https://orange.realforeclose.com/index.cfm?zaction=admin&amp;zmethod=REPORT&amp;Report_id=33" CvElementArea="20, 343, 152, 19" CvTextArea="28, 347, 67, 12" CvTextArgument="Search Report" CvType="Button" DesignTimeRectangle="21, 344, 150, 17" DesignTimeScaleFactor="1" ElementType="Button" FriendlyName="'Search Report'" FullSelectorArgument="&lt;webctrl id='MAIN_TBL' tag='TABLE' /&gt;&lt;webctrl id='testBut' tableRow='1' tag='INPUT' /&gt;" FuzzySelectorArgument="&lt;webctrl id='MAIN_TBL' tag='TABLE' /&gt;&lt;webctrl id='testBut' type='button' tag='INPUT' class='btn_align_left' aaname='Search Report' check:text='Search Report' /&gt;" Guid="6de0dfb4-036a-4706-8f1f-dd644b9939a0" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAJoAAAAVCAYAAAC+GfcaAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAHxSURBVGhD7ZrtkcIgFEXTDA3Ri5aQArK/rIFqUoC2YAksN/D4yKK7ISEz69wfZxzhgYz3+Ixjhvv9YQnpDUUjp1CIdrvd7DRN9nq9EtIMHIJLuVtRNEwYY+zz+SRkN3Aply2KNk1f1QWEtAKnfoiGllcrJqQVOEXRSHfaRTPaDsMQUeNcr9uFsVqNdq7OBVbnWNC9ri9nO468dm2hUTQnwKCtic9dAErZcc5rjuBvopWS9zqLYx6t6ibxZ9Mo2rswMSfdJdXMo8q6TpAUkrh9MKZNWePlgWjaEdbVpHsrWu0sGHN7ahmXD0xe688jeymMq4u9hPk+3fuzaRQNlMHImw9ZUhDS+Wb3EzeFY1zIS5D42pMOgW4RQ5d1eMwFqchd+er87Sw4txcp1SySx26V12avyY7WzA7RSkQePJbBh6AWkdK4iBZFqIboAs+6mNF10Yo9ivr8HADrIY8IHda414VoIl+Sul7ra8gW2kRbBQokqLKLCGthXogWayTojaKF59KZ6mfB3ls6GkU7gvaOhkDzbhED8EGmOQksjWkd5FhJsoQdavx4g2gOiOzHXp0lu0Yr5E61XkRfW4iGecq2mXbR/i0recgpUDRyClXR+F8nOZrqf528e4Mcycu7N0Q23o9G9vL2fjRCekLRyAk87DeHOAkMC/J0uAAAAABJRU5ErkJggg==" InformativeScreenshot="9f16bbb8706ef3cc2ed0e5428a2e7746.png" ScopeSelectorArgument="&lt;html app='msedge.exe' title='RealForeclose- Orange County -Report Viewer' /&gt;" SearchSteps="FuzzySelector, Image, CV" Version="V2" Visibility="Interactive">
+                          <uix:TargetAnchorable.Anchors>
+                            <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                              <uix:Target CvElementArea="25, 390, 135, 18" CvTextArea="66, 394, 53, 10" CvTextArgument="Reset Form" CvType="Button" DesignTimeRectangle="26, 391, 133, 17" ElementType="Button" FriendlyName="'Reset Form'" FullSelectorArgument="&lt;webctrl id='MAIN_TBL' tag='TABLE' /&gt;&lt;webctrl id='resetFltr' tableRow='1' tag='INPUT' /&gt;" FuzzySelectorArgument="&lt;webctrl id='MAIN_TBL' tag='TABLE' /&gt;&lt;webctrl id='resetFltr' type='button' tag='INPUT' class='' aaname='Reset Form' check:text='Reset Form' /&gt;" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAIkAAAAVCAYAAABygM3xAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAGKSURBVGhD7ZrtrYMgFIZdhoUYxhEYwKY/nIFpGKBdwRHO5Yh8CpomTW6V98eTWIRDk/fxaKLD6/UmAI6AJOCUTJJ5nmmaJhrHEXQK588epF4ESfiE1pqWZQGdwx6kogRJpulRXQD6hH3YScKtpjYZ9An7AEnAIdeVREsahiFHfus5ypBS+1paFvsNgpTJ59yRS0silEnGbLDiS6EZRaIinJZ9SFFyU0n4eH+1Z53AS5B2pHUsrs3rH0miSfoaYT87Zv+PWOs+bU1J0u9v9zFKuGOhyOzq/RaXlsSFEvGhcgAxYA5Qkl5DKwPx59zvsK7ZSer78XjYj9eu+6S1nXhSx2M3PxX7d7lHJwnBuHOtZ4dw9TIsAa/L5iXjVUnqgebjNSlZhlSYOP8Kt7B7SLL99reQvJPU8EHlnSTwsSSNTgJJ/plSEksMi4NIO8R2ZZcdY6sT523rfYcpRGkHmtb2cyAJ6AhIAk6pSoJ3NyCl+u4Gb4GBp/kW2IuC70n65vB7EgBaQBJwwpv+AFd5VAmKYN5VAAAAAElFTkSuQmCC" SearchSteps="FuzzySelector, Image, CV" />
+                            </scg:List>
+                          </uix:TargetAnchorable.Anchors>
+                        </uix:TargetAnchorable>
+                      </uix:NClick.Target>
+                    </uix:NClick>
+                    <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="416,61" sap2010:WorkflowViewState.IdRef="CommentOut_8">
+                      <ui:CommentOut.Body>
+                        <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="450,309" sap2010:WorkflowViewState.IdRef="Sequence_47">
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                          <ui:ClickOCRText ContinueOnError="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click OCR Text 'INPUT  testBut'" sap:VirtualizedContainerService.HintSize="416,249" sap2010:WorkflowViewState.IdRef="ClickOCRText_5" KeyModifiers="None" MouseButton="BTN_LEFT" Occurrence="1" Text="Search Report">
+                            <ui:ClickOCRText.CursorPosition>
+                              <ui:CursorPosition Position="Center">
+                                <ui:CursorPosition.OffsetX>
+                                  <InArgument x:TypeArguments="x:Int32" />
+                                </ui:CursorPosition.OffsetX>
+                                <ui:CursorPosition.OffsetY>
+                                  <InArgument x:TypeArguments="x:Int32" />
+                                </ui:CursorPosition.OffsetY>
+                              </ui:CursorPosition>
+                            </ui:ClickOCRText.CursorPosition>
+                            <ui:ClickOCRText.OCREngine>
+                              <ActivityFunc x:TypeArguments="sd:Image, scg:IEnumerable(scg:KeyValuePair(sd1:Rectangle, x:String))">
+                                <ActivityFunc.Argument>
+                                  <DelegateInArgument x:TypeArguments="sd:Image" Name="Image" />
+                                </ActivityFunc.Argument>
+                                <p1:UiPathScreenOCR ApiKey="{x:Null}" Endpoint="{x:Null}" Output="{x:Null}" PredictionId="{x:Null}" Text="{x:Null}" UseLocalServer="{x:Null}" ComputeSkewAngle="False" DisplayName="UiPath Screen OCR" ExtractWords="True" sap:VirtualizedContainerService.HintSize="300,25" sap2010:WorkflowViewState.IdRef="UiPathScreenOCR_6" Image="[Image]" Language="auto" Profile="Screen" Scale="1" Timeout="100000" />
+                              </ActivityFunc>
+                            </ui:ClickOCRText.OCREngine>
+                            <ui:ClickOCRText.Target>
+                              <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="e2ac392e-24d2-4774-a739-d318222ed567" InformativeScreenshot="c9059a53ca52f3d7ee017582dc4d54e3" Selector="&lt;webctrl id='MAIN_TBL' tag='TABLE' /&gt;&lt;webctrl id='testBut' tableRow='1' tag='INPUT' /&gt;">
+                                <ui:Target.TimeoutMS>
+                                  <InArgument x:TypeArguments="x:Int32" />
+                                </ui:Target.TimeoutMS>
+                                <ui:Target.WaitForReady>
+                                  <InArgument x:TypeArguments="ui:WaitForReady" />
+                                </ui:Target.WaitForReady>
+                              </ui:Target>
+                            </ui:ClickOCRText.Target>
+                          </ui:ClickOCRText>
+                        </Sequence>
+                      </ui:CommentOut.Body>
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                    </ui:CommentOut>
+                    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="416,61" sap2010:WorkflowViewState.IdRef="LogMessage_13" Level="Info" Message="[&quot;'Search Report' clicked&quot;]">
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                    </ui:LogMessage>
+                    <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="416,61" sap2010:WorkflowViewState.IdRef="CommentOut_3">
                       <ui:CommentOut.Body>
                         <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="450,267" sap2010:WorkflowViewState.IdRef="Sequence_39">
                           <sap:WorkflowViewStateService.ViewState>
@@ -729,13 +1038,19 @@
                           </uix:NClick>
                         </Sequence>
                       </ui:CommentOut.Body>
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
                     </ui:CommentOut>
-                    <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click file icon to download CSV file" sap:VirtualizedContainerService.HintSize="486,194" sap2010:WorkflowViewState.IdRef="NClick_17" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="e09c41a4-8693-49b5-9859-5d3301bfa32b" Version="V3">
+                    <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click file icon to download CSV file" sap:VirtualizedContainerService.HintSize="416,194" sap2010:WorkflowViewState.IdRef="NClick_17" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="e09c41a4-8693-49b5-9859-5d3301bfa32b" Version="V3">
                       <uix:NClick.Target>
-                        <uix:TargetAnchorable BrowserURL="https://orange.realforeclose.com/index.cfm?zaction=admin&amp;zmethod=REPORT&amp;Report_id=33" DesignTimeRectangle="266, 169, 16, 16" DesignTimeScaleFactor="1" ElementType="Icon" FriendlyName="'IMG'" FullSelectorArgument="&lt;webctrl id='MAIN_TBL' tag='TABLE' /&gt;&lt;webctrl aaname='Print Report' tableRow='1' tag='IMG' /&gt;" FuzzySelectorArgument="&lt;webctrl id='MAIN_TBL' tag='TABLE' /&gt;&lt;webctrl aaname='Print Report' type='' tag='IMG' class='' /&gt;" Guid="23bca8df-8964-4085-a39c-2740d3e28051" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAKkSURBVDhPrZPbS2JRFMbPHxe9Vi/So84Q9BQoQg8i0SRF0+WlxIfwQpCERjJJjmUXsxqRQkG0tHE4CjmV5K1S0yG+OWvRlg7Vmx98Hjzs9dvf3msdKZOT0Uv3Hthut0EmNZsdnP7KolZv4DLzt2s5X8LVVR4vLy+87iMJjgpI2gklUGnhne2rP5BIJD6FfgoslSr4eSwjV4bKgchvLC0toV6vv65Uqwt8fn4G+a1WvWc4K0Llkz9tjI4acX19/bpKLcH5ELgTvkAwh679F4AvBXz5asL+/r7qREJdYKvVAvmtQqETnCqAaBKIX/5DOleFXCji5uYG09PTODo6elcjOFKz2VS62+SX9IxGo4jFYri/v8fW1hZ2d3exubmJQCDA6ch+vx/r6+vKfZe4jiQ4UqPRAJnk8/mQTqcRiUTg8XiwtrbGna3VaiiXywzIZrM4PDzEwcEBZmdnUSwqF6xIcKSnpyeQSQ6HA4VCAZlMBslkkpPSBvF4nDcJh8M4Pz9HKpXip16vh9vt5nph6fHxEWTS+Pg4L6AUBBXO5/OclFLZ7XZOZrCMYnh4GFNTU6hUKswgSw8PDyCT6J4I4HK5sLKywgm9Xi8WFhYwOTnJxU6nk4/83WNioNlsZqDgqIB0jE6nw/8JbLVaMTExAZvNxg2i9MvLy1hcXOSUIyMjMJlMaiBNvpj+YDDIyWgBvbu9vcXGxgZ/IVqtFmNjY5ifn8fe3h7u7u54E4PBwA0THIk6SCbRwIZCId6Z0tACKpqbcyjz51bGJcBd3d7e5uMODQ1xQuq+4EjVahVkIYLKsszH1el06O/vR19fHwYHNUrxNwwMDECj0cBoNPKY0VSQBOcdUIjS0Z3SEWdmZniQ6f4sFgsPOyV9+7V0gRXlp5fuMbCK/8f8gLp121twAAAAAElFTkSuQmCC" InformativeScreenshot="19466fb5f5edd05be4af1819851bd7a4.png" ScopeSelectorArgument="&lt;html app='msedge.exe' title='RealForeclose- Orange County -Report Viewer' /&gt;" SearchSteps="FuzzySelector, Image" Version="V2" Visibility="Interactive">
+                        <uix:TargetAnchorable BrowserURL="https://orange.realforeclose.com/index.cfm?zaction=admin&amp;zmethod=REPORT&amp;Report_id=33" CvType="Icon" DesignTimeRectangle="244, 231, 16, 16" DesignTimeScaleFactor="1" ElementType="Icon" FriendlyName="'IMG'" FullSelectorArgument="&lt;webctrl id='MAIN_TBL' tag='TABLE' /&gt;&lt;webctrl tableRow='1' tag='IMG' /&gt;" FuzzySelectorArgument="&lt;webctrl id='MAIN_TBL' tag='TABLE' /&gt;&lt;webctrl type='' tag='IMG' class='' aaname='Report CSV' /&gt;" Guid="3356ffe3-d94f-4502-9452-e587567a5695" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAHvSURBVDhPrZRNTxpBHMb7lfwCPfTqoZ+gJ09NqcqF0As2DfHWRLEXkupFaGgTbo2kIOimpqGERaVqNJS3TZqyLXHZN15azNOdPwxFd0Jc45P8MrsZ5rfP7JJ5UCwWMR3dNKH8aKFSb+L8e90zE6Fo8i64GopitOvo/KrislVB8zQDU1MxHA7Hs6MMBgOChGyb08m9fYyTvXmsPZtDfPUhXb8JLdAYXnyOzVdPUK1W0e/3xytuCNk745HlnwgGJYIJdz+s4/WLJXza+Yb3a0vIfUyTMJFIoNX6v+6akH0AnmBwHwdfFKw+fQTVMmhsdy0ae3//0Mji9/tRq9XomoW1ZZCQvUweJszIRyTjMKHe75FweHVFv2NCtm2emULp8MyzsNdz5h2Ewr3SKYlCKysTMtnsTGG32yXEQnkk9NLQtm1CKMwdHbsa8pY8N4WWZRFioXziuaHp/JcZ4i0Xzj03NAyDEAql0oXnhjOFu8XRlnmr2wh1XSeEwp1CadLut22ibVs4KHxFVpKw/S6OyMYGotEoFEUZrwI6nQ7hErKn7H8uYSsWw8twGIvLy/D5fAgEAgg795FIBDFnLp/Pk4BH0zTCJWTHUqPRQCqVQjKZRDqdpsXlchmVinN8NZtQVZW+6PQR5hJeOjf3wT0LNfwD3AyOlMXMBjgAAAAASUVORK5CYII=" InformativeScreenshot="708b6aa284b4aabdfee8f10259c15821.png" ScopeSelectorArgument="&lt;html app='msedge.exe' title='RealForeclose- Orange County -Report Viewer' /&gt;" SearchSteps="FuzzySelector, Image, CV" Version="V2" Visibility="Interactive">
                           <uix:TargetAnchorable.Anchors>
                             <scg:List x:TypeArguments="uix:ITarget" Capacity="4">
-                              <uix:Target CvType="Icon" DesignTimeRectangle="244, 169, 16, 16" ElementType="Icon" FriendlyName="'IMG'" FullSelectorArgument="&lt;webctrl id='MAIN_TBL' tag='TABLE' /&gt;&lt;webctrl tableRow='1' tag='IMG' /&gt;" FuzzySelectorArgument="&lt;webctrl id='MAIN_TBL' tag='TABLE' /&gt;&lt;webctrl type='' tag='IMG' class='' aaname='Report CSV' /&gt;" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAHvSURBVDhPrZRNTxpBHMb7lfwCPfTqoZ+gJ09NqcqF0As2DfHWRLEXkupFaGgTbo2kIOimpqGERaVqNJS3TZqyLXHZN15azNOdPwxFd0Jc45P8MrsZ5rfP7JJ5UCwWMR3dNKH8aKFSb+L8e90zE6Fo8i64GopitOvo/KrislVB8zQDU1MxHA7Hs6MMBgOChGyb08m9fYyTvXmsPZtDfPUhXb8JLdAYXnyOzVdPUK1W0e/3xytuCNk745HlnwgGJYIJdz+s4/WLJXza+Yb3a0vIfUyTMJFIoNX6v+6akH0AnmBwHwdfFKw+fQTVMmhsdy0ae3//0Mji9/tRq9XomoW1ZZCQvUweJszIRyTjMKHe75FweHVFv2NCtm2emULp8MyzsNdz5h2Ewr3SKYlCKysTMtnsTGG32yXEQnkk9NLQtm1CKMwdHbsa8pY8N4WWZRFioXziuaHp/JcZ4i0Xzj03NAyDEAql0oXnhjOFu8XRlnmr2wh1XSeEwp1CadLut22ibVs4KHxFVpKw/S6OyMYGotEoFEUZrwI6nQ7hErKn7H8uYSsWw8twGIvLy/D5fAgEAgg795FIBDFnLp/Pk4BH0zTCJWTHUqPRQCqVQjKZRDqdpsXlchmVinN8NZtQVZW+6PQR5hJeOjf3wT0LNfwD3AyOlMXMBjgAAAAASUVORK5CYII=" SearchSteps="FuzzySelector, Image, CV" />
+                              <uix:Target CvType="Icon" DesignTimeRectangle="266, 231, 16, 16" ElementType="Icon" FriendlyName="'IMG'" FullSelectorArgument="&lt;webctrl id='MAIN_TBL' tag='TABLE' /&gt;&lt;webctrl aaname='Print Report' tableRow='1' tag='IMG' /&gt;" FuzzySelectorArgument="&lt;webctrl id='MAIN_TBL' tag='TABLE' /&gt;&lt;webctrl aaname='Print Report' type='' tag='IMG' class='' /&gt;" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAKkSURBVDhPrZPbS2JRFMbPHxe9Vi/So84Q9BQoQg8i0SRF0+WlxIfwQpCERjJJjmUXsxqRQkG0tHE4CjmV5K1S0yG+OWvRlg7Vmx98Hjzs9dvf3msdKZOT0Uv3Hthut0EmNZsdnP7KolZv4DLzt2s5X8LVVR4vLy+87iMJjgpI2gklUGnhne2rP5BIJD6FfgoslSr4eSwjV4bKgchvLC0toV6vv65Uqwt8fn4G+a1WvWc4K0Llkz9tjI4acX19/bpKLcH5ELgTvkAwh679F4AvBXz5asL+/r7qREJdYKvVAvmtQqETnCqAaBKIX/5DOleFXCji5uYG09PTODo6elcjOFKz2VS62+SX9IxGo4jFYri/v8fW1hZ2d3exubmJQCDA6ch+vx/r6+vKfZe4jiQ4UqPRAJnk8/mQTqcRiUTg8XiwtrbGna3VaiiXywzIZrM4PDzEwcEBZmdnUSwqF6xIcKSnpyeQSQ6HA4VCAZlMBslkkpPSBvF4nDcJh8M4Pz9HKpXip16vh9vt5nph6fHxEWTS+Pg4L6AUBBXO5/OclFLZ7XZOZrCMYnh4GFNTU6hUKswgSw8PDyCT6J4I4HK5sLKywgm9Xi8WFhYwOTnJxU6nk4/83WNioNlsZqDgqIB0jE6nw/8JbLVaMTExAZvNxg2i9MvLy1hcXOSUIyMjMJlMaiBNvpj+YDDIyWgBvbu9vcXGxgZ/IVqtFmNjY5ifn8fe3h7u7u54E4PBwA0THIk6SCbRwIZCId6Z0tACKpqbcyjz51bGJcBd3d7e5uMODQ1xQuq+4EjVahVkIYLKsszH1el06O/vR19fHwYHNUrxNwwMDECj0cBoNPKY0VSQBOcdUIjS0Z3SEWdmZniQ6f4sFgsPOyV9+7V0gRXlp5fuMbCK/8f8gLp121twAAAAAElFTkSuQmCC" SearchSteps="FuzzySelector, Image, CV" />
                             </scg:List>
                           </uix:TargetAnchorable.Anchors>
                         </uix:TargetAnchorable>
@@ -747,7 +1062,15 @@
                         </scg:Dictionary>
                       </sap:WorkflowViewStateService.ViewState>
                     </uix:NClick>
-                    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="486,52" sap2010:WorkflowViewState.IdRef="LogMessage_11" Message="[&quot;Downloaded Foreclosure CSV for Seminole County&quot;]">
+                    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="416,61" sap2010:WorkflowViewState.IdRef="LogMessage_11" Message="[&quot;Downloaded Foreclosure CSV for Seminole County&quot;]">
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                    </ui:LogMessage>
+                    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="416,52" sap2010:WorkflowViewState.IdRef="LogMessage_14" Message="[&quot;Downloaded Foreclosure CSV for Seminole County&quot;]">
                       <sap:WorkflowViewStateService.ViewState>
                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
                           <x:Boolean x:Key="IsExpanded">False</x:Boolean>

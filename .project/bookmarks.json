@@ -9,25 +9,25 @@
         "ActivityId": "1.1300",
         "ActivityName": "Multiple Assign",
         "IsTransient": false
-      },
-      {
-        "IsEnabled": true,
-        "Annotation": null,
-        "Id": "3b720bd0-d1e6-4d66-abe3-e73176192193",
-        "ActivityIdRef": "PythonScope_1",
-        "ActivityId": "1.6",
-        "ActivityName": "Python Scope",
-        "IsTransient": false
       }
     ],
     "Counties/Orange/Download Orange County Foreclosures.xaml": [
       {
         "IsEnabled": true,
         "Annotation": null,
-        "Id": "ab2b7a33-e65b-4858-ab83-f888bd2fc27e",
-        "ActivityIdRef": "NTypeInto_2",
-        "ActivityId": "1.428",
-        "ActivityName": "Type Into 'User Name'",
+        "Id": "59eda46a-1e3b-45ab-82e9-caee30c575af",
+        "ActivityIdRef": "NSelectItem_3",
+        "ActivityId": "1.75",
+        "ActivityName": "Select Item 'Auction Type'",
+        "IsTransient": false
+      },
+      {
+        "IsEnabled": true,
+        "Annotation": null,
+        "Id": "b6d5ccf9-68f1-4762-bf4e-7d5911adec71",
+        "ActivityIdRef": "Sequence_35",
+        "ActivityId": "1.12",
+        "ActivityName": "Get and Save the csv file",
         "IsTransient": false
       }
     ]
