@@ -50,6 +50,7 @@
       <x:String>UiPath.CV.Activities.Interfaces</x:String>
       <x:String>UiPath.Platform.ResourceHandling</x:String>
       <x:String>System.Activities.Runtime.Collections</x:String>
+      <x:String>System.Numerics</x:String>
     </sco:Collection>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
@@ -121,9 +122,10 @@
       <AssemblyReference>System.Runtime.InteropServices</AssemblyReference>
       <AssemblyReference>System.Collections.NonGeneric</AssemblyReference>
       <AssemblyReference>System.Linq.Expressions</AssemblyReference>
+      <AssemblyReference>System.Runtime.Numerics</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="This workflow downloads the Orange County foreclosures&#xA;1) log in to RealForeclosure.com&#xA;2) Click &quot;ok&quot; for each caveat prompt&#xA;3) Select the &quot;Quick Search&quot; hyperlink&#xA;4) Selects the &quot;Foreclousre&quot; choice from the combo box&#xA;5) download the csv file&#xA;" DisplayName="Process Orange County" sap:VirtualizedContainerService.HintSize="1186,8057" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="This workflow downloads the Orange County foreclosures&#xA;1) log in to RealForeclosure.com&#xA;2) Click &quot;ok&quot; for each caveat prompt&#xA;3) Select the &quot;Quick Search&quot; hyperlink&#xA;4) Selects the &quot;Foreclousre&quot; choice from the combo box&#xA;5) download the csv file&#xA;" DisplayName="Process Orange County" sap:VirtualizedContainerService.HintSize="1186,8552" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:Boolean" Name="csvExists" />
     </Sequence.Variables>
@@ -198,13 +200,13 @@
         </TryCatch.Try>
       </TryCatch>
     </Sequence>
-    <uix:NApplicationCard AttachMode="ByInstance" DisplayName="Use Browser Edge: RealForeclose- Orange County -Splash Page" sap:VirtualizedContainerService.HintSize="694,7725" sap2010:WorkflowViewState.IdRef="NApplicationCard_1" InteractionMode="DebuggerApi" ScopeGuid="e09c41a4-8693-49b5-9859-5d3301bfa32b" Version="V2">
+    <uix:NApplicationCard AttachMode="ByInstance" DisplayName="Use Browser Edge: RealForeclose- Orange County -Splash Page" sap:VirtualizedContainerService.HintSize="694,8220" sap2010:WorkflowViewState.IdRef="NApplicationCard_1" InteractionMode="DebuggerApi" ScopeGuid="e09c41a4-8693-49b5-9859-5d3301bfa32b" Version="V2">
       <uix:NApplicationCard.Body>
         <ActivityAction x:TypeArguments="x:Object">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="x:Object" Name="WSSessionData" />
           </ActivityAction.Argument>
-          <Sequence sap2010:Annotation.AnnotationText="1) Check the &quot;logged in&quot; state&#xA;2) Log in if needed&#xA;3) If not logged in, the click &quot;ok&quot; on all subsequent prompts" sap:VirtualizedContainerService.HintSize="660,7480" sap2010:WorkflowViewState.IdRef="Sequence_37">
+          <Sequence sap2010:Annotation.AnnotationText="1) Check the &quot;logged in&quot; state&#xA;2) Log in if needed&#xA;3) If not logged in, the click &quot;ok&quot; on all subsequent prompts" sap:VirtualizedContainerService.HintSize="660,7975" sap2010:WorkflowViewState.IdRef="Sequence_37">
             <Sequence.Variables>
               <Variable x:TypeArguments="x:String" Name="loginState" />
               <Variable x:TypeArguments="x:String" Name="bannerText" />
@@ -262,7 +264,55 @@
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
             </uix:NGetAttributeGeneric>
-            <If sap2010:Annotation.AnnotationText="1) check if banner text contains the phrase &quot;Log Off&quot;&#xA;2) if not, log in" Condition="[instr(bannerText,&quot;Log Off&quot;)=0]" DisplayName="If not logged in, do so" sap:VirtualizedContainerService.HintSize="626,7186" sap2010:WorkflowViewState.IdRef="If_4">
+            <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="626,61" sap2010:WorkflowViewState.IdRef="CommentOut_10">
+              <ui:CommentOut.Body>
+                <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="450,108" sap2010:WorkflowViewState.IdRef="Sequence_59">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <If Condition="[instr(bannerText,&quot;Log Off&quot;)&lt;&gt;0]" sap:VirtualizedContainerService.HintSize="416,48" sap2010:WorkflowViewState.IdRef="If_9">
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <If.Then>
+                      <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="450,249" sap2010:WorkflowViewState.IdRef="Sequence_57">
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                        <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'Log Off'" sap:VirtualizedContainerService.HintSize="416,185" sap2010:WorkflowViewState.IdRef="NClick_19" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="e09c41a4-8693-49b5-9859-5d3301bfa32b" Version="V3">
+                          <uix:NClick.Target>
+                            <uix:TargetAnchorable BrowserURL="https://orange.realforeclose.com/index.cfm?zaction=admin&amp;zmethod=REPORT&amp;Report_id=33" CvTextArgument="Log Off" CvType="Text" DesignTimeRectangle="969, 146, 78, 40" DesignTimeScaleFactor="1" ElementType="Text" FriendlyName="'Log Off'" FullSelectorArgument="&lt;webctrl id='LogOff' tag='A' /&gt;" FuzzySelectorArgument="&lt;webctrl id='LogOff' tag='A' type='' class='' aaname='Log Off' check:innerText='Log Off' /&gt;" Guid="c933d220-e055-4aae-8243-9870ecd4e77d" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAFIAAAAsCAYAAAD2BO8qAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAARvSURBVGhD7ZfJUpU5GIaz5fxn4LZoBxQE0fsQFtrSA63Yk7MbdQU30Raw4AoEenN22LqDKhZYZZeb+I1JTk4OiXCUTVL11jc8Sf7kNSKaiZsv7MTN5yCML2yLctCN55JXXsINNqgp0lonV87KcdO68cy2FnQS5CCKC5xXXsbhRT51ExBOLDyFCD0UscpLuMGmSieNUuXpPsowfGJb10Eucm+CVHkJNwQG9FgU91WVpzgYCc15hSKsw17lWW5a848geWQbgY3m17lfeRk3zfxDgSqsH/LiOa0rz3EysjUHBYiiTpRe5WXcNHN/QwOFQPNaf20tRv5lm2sQUVC3sQ4mVZ7nprmGk0S0oNanqU0z+6dtK4Cca4jU07ryHDfUpOIP28Yok6k3C73Ki7ihAtRIbM9IjJTjt/79ZO3H/+ziKdefha99sNE4tGvRnGZ2z/aF2g970Busz3o+MrKZ/R0K0UyQk8r4Ihn5DoxMc1ePlYsZ+N2Qbx2SP/0t7KXP5+oxnc+0Zx4wpPjAdigPVcYX94KDJnhu/Wn42ntw6/1umpOZn+z2a16vc5VzDS/zhP19P89N+yrDDk3iySTsg0q5NzLNab28FB1HexsDnPZw49BuB384Q99//c4eiVHp823Y7Y/4jT5FPz7bo/8lpYF75O+X42DkKjRWoaFCiD1cwL0S7ow8iesLwR4ZwWbS/pvBC0JONQzaU7+NCjn8LMQ8xSH6M6361yt83dWj13/N/Z2RqvbV+5xf0bqM+0OnuL4OfIGe+zVpTpcVI6gHchyNjNgAH9g/NI55bGRqPddl3HSuILhv2xBVNEn6pdwdOsl36R+F/ma0nl7loV0fwcM/nKHvy4tcx3rE+cL17kUKVyP1nKn14f1yHIy8xwXFOE/10pwPvS9GxlyN4rmu78xI8/Sekr/a55+RrwbX+PyNvPI31GPjdhz39aj1ofLcdKYx+Y0b0xglh9ilXhn3l07x8FKeL7k1aU6XDfeMvu/NSPDNA4Bq9PBcV4/p/qaLMCHu35M4rJg7I0/idDHh9KLEPJzjLi6cahjBnqF43x35PTKaI2vxhev3vXGDtfJY8flz3HQur9guihorlmrNMRZyel3JAea8lDVqjgwyMdifzdZxwL/+HO/bpfCbYS7fX9qNv31g16PzsXFv3XpnrPCT9i/hhiZd/hUgApwIuchtck58EQ2Cy4/i532+kJvuJUgueUhyNbLvwf+x28f8Yhx/yX/1+xvj2D9g34iDkdr8BRqBsB5Y9K35W/55F4z+Rshz68+Xg5ECLkoE9bQXqnKXp7jpXvwZEhQ0MJcFPcpFlWc5GPkTOOybPah9jrHyEk5Gdi9AgQ2IVGNO9TLXlWc5GLnsmj3MEWJOERdVXsJN78JdnkTxLkCpfwj7lee4oUYoWUCKWeUjuRj5o52EiMKcpXXlJRyMvCPgjp2cggWgHkrqysu4mZzChjQlx4iTJ2ly5SXc9KZuS4FxOK+8jBv5b20dZxzVyDGNauRYhrVfAB0cO2ehQ5uZAAAAAElFTkSuQmCC" InformativeScreenshot="6563e2c1aa9a4b5583fb99a0e7b471c9.png" ScopeSelectorArgument="&lt;html app='msedge.exe' title='RealForeclose- Orange County -Report Viewer' /&gt;" SearchSteps="FuzzySelector, Image, CV" Version="V2" Visibility="Interactive" />
+                          </uix:NClick.Target>
+                        </uix:NClick>
+                      </Sequence>
+                    </If.Then>
+                    <If.Else>
+                      <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="450,94" sap2010:WorkflowViewState.IdRef="Sequence_58">
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                      </Sequence>
+                    </If.Else>
+                  </If>
+                </Sequence>
+              </ui:CommentOut.Body>
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+            </ui:CommentOut>
+            <If sap2010:Annotation.AnnotationText="1) check if banner text contains the phrase &quot;Log Off&quot;&#xA;2) if not, log in" Condition="[instr(bannerText,&quot;Log Off&quot;)=0]" DisplayName="If not logged in, do so" sap:VirtualizedContainerService.HintSize="626,7620" sap2010:WorkflowViewState.IdRef="If_4">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
@@ -271,7 +321,7 @@
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
               <If.Then>
-                <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="624,6911" sap2010:WorkflowViewState.IdRef="Sequence_22">
+                <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="624,7345" sap2010:WorkflowViewState.IdRef="Sequence_22">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -747,7 +797,7 @@
                       </If.Else>
                     </If>
                   </Sequence>
-                  <Sequence DisplayName="Get and Save the csv file" sap:VirtualizedContainerService.HintSize="590,1540" sap2010:WorkflowViewState.IdRef="Sequence_35">
+                  <Sequence DisplayName="Get and Save the csv file" sap:VirtualizedContainerService.HintSize="590,1974" sap2010:WorkflowViewState.IdRef="Sequence_35">
                     <Sequence.Variables>
                       <Variable x:TypeArguments="ui:UiElement" Name="nextPageElement" />
                       <Variable x:TypeArguments="ui:UiElement" Name="buttonElement" />
@@ -1049,7 +1099,7 @@
                       <uix:NClick.Target>
                         <uix:TargetAnchorable BrowserURL="https://orange.realforeclose.com/index.cfm?zaction=admin&amp;zmethod=REPORT&amp;Report_id=33" CvType="Icon" DesignTimeRectangle="244, 231, 16, 16" DesignTimeScaleFactor="1" ElementType="Icon" FriendlyName="'IMG'" FullSelectorArgument="&lt;webctrl id='MAIN_TBL' tag='TABLE' /&gt;&lt;webctrl tableRow='1' tag='IMG' /&gt;" FuzzySelectorArgument="&lt;webctrl id='MAIN_TBL' tag='TABLE' /&gt;&lt;webctrl type='' tag='IMG' class='' aaname='Report CSV' /&gt;" Guid="3356ffe3-d94f-4502-9452-e587567a5695" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAHvSURBVDhPrZRNTxpBHMb7lfwCPfTqoZ+gJ09NqcqF0As2DfHWRLEXkupFaGgTbo2kIOimpqGERaVqNJS3TZqyLXHZN15azNOdPwxFd0Jc45P8MrsZ5rfP7JJ5UCwWMR3dNKH8aKFSb+L8e90zE6Fo8i64GopitOvo/KrislVB8zQDU1MxHA7Hs6MMBgOChGyb08m9fYyTvXmsPZtDfPUhXb8JLdAYXnyOzVdPUK1W0e/3xytuCNk745HlnwgGJYIJdz+s4/WLJXza+Yb3a0vIfUyTMJFIoNX6v+6akH0AnmBwHwdfFKw+fQTVMmhsdy0ae3//0Mji9/tRq9XomoW1ZZCQvUweJszIRyTjMKHe75FweHVFv2NCtm2emULp8MyzsNdz5h2Ewr3SKYlCKysTMtnsTGG32yXEQnkk9NLQtm1CKMwdHbsa8pY8N4WWZRFioXziuaHp/JcZ4i0Xzj03NAyDEAql0oXnhjOFu8XRlnmr2wh1XSeEwp1CadLut22ibVs4KHxFVpKw/S6OyMYGotEoFEUZrwI6nQ7hErKn7H8uYSsWw8twGIvLy/D5fAgEAgg795FIBDFnLp/Pk4BH0zTCJWTHUqPRQCqVQjKZRDqdpsXlchmVinN8NZtQVZW+6PQR5hJeOjf3wT0LNfwD3AyOlMXMBjgAAAAASUVORK5CYII=" InformativeScreenshot="708b6aa284b4aabdfee8f10259c15821.png" ScopeSelectorArgument="&lt;html app='msedge.exe' title='RealForeclose- Orange County -Report Viewer' /&gt;" SearchSteps="FuzzySelector, Image, CV" Version="V2" Visibility="Interactive">
                           <uix:TargetAnchorable.Anchors>
-                            <scg:List x:TypeArguments="uix:ITarget" Capacity="4">
+                            <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
                               <uix:Target CvType="Icon" DesignTimeRectangle="266, 231, 16, 16" ElementType="Icon" FriendlyName="'IMG'" FullSelectorArgument="&lt;webctrl id='MAIN_TBL' tag='TABLE' /&gt;&lt;webctrl aaname='Print Report' tableRow='1' tag='IMG' /&gt;" FuzzySelectorArgument="&lt;webctrl id='MAIN_TBL' tag='TABLE' /&gt;&lt;webctrl aaname='Print Report' type='' tag='IMG' class='' /&gt;" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAKkSURBVDhPrZPbS2JRFMbPHxe9Vi/So84Q9BQoQg8i0SRF0+WlxIfwQpCERjJJjmUXsxqRQkG0tHE4CjmV5K1S0yG+OWvRlg7Vmx98Hjzs9dvf3msdKZOT0Uv3Hthut0EmNZsdnP7KolZv4DLzt2s5X8LVVR4vLy+87iMJjgpI2gklUGnhne2rP5BIJD6FfgoslSr4eSwjV4bKgchvLC0toV6vv65Uqwt8fn4G+a1WvWc4K0Llkz9tjI4acX19/bpKLcH5ELgTvkAwh679F4AvBXz5asL+/r7qREJdYKvVAvmtQqETnCqAaBKIX/5DOleFXCji5uYG09PTODo6elcjOFKz2VS62+SX9IxGo4jFYri/v8fW1hZ2d3exubmJQCDA6ch+vx/r6+vKfZe4jiQ4UqPRAJnk8/mQTqcRiUTg8XiwtrbGna3VaiiXywzIZrM4PDzEwcEBZmdnUSwqF6xIcKSnpyeQSQ6HA4VCAZlMBslkkpPSBvF4nDcJh8M4Pz9HKpXip16vh9vt5nph6fHxEWTS+Pg4L6AUBBXO5/OclFLZ7XZOZrCMYnh4GFNTU6hUKswgSw8PDyCT6J4I4HK5sLKywgm9Xi8WFhYwOTnJxU6nk4/83WNioNlsZqDgqIB0jE6nw/8JbLVaMTExAZvNxg2i9MvLy1hcXOSUIyMjMJlMaiBNvpj+YDDIyWgBvbu9vcXGxgZ/IVqtFmNjY5ifn8fe3h7u7u54E4PBwA0THIk6SCbRwIZCId6Z0tACKpqbcyjz51bGJcBd3d7e5uMODQ1xQuq+4EjVahVkIYLKsszH1el06O/vR19fHwYHNUrxNwwMDECj0cBoNPKY0VSQBOcdUIjS0Z3SEWdmZniQ6f4sFgsPOyV9+7V0gRXlp5fuMbCK/8f8gLp121twAAAAAElFTkSuQmCC" SearchSteps="FuzzySelector, Image, CV" />
                             </scg:List>
                           </uix:TargetAnchorable.Anchors>
@@ -1062,22 +1112,20 @@
                         </scg:Dictionary>
                       </sap:WorkflowViewStateService.ViewState>
                     </uix:NClick>
-                    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="416,61" sap2010:WorkflowViewState.IdRef="LogMessage_11" Message="[&quot;Downloaded Foreclosure CSV for Seminole County&quot;]">
+                    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="416,181" sap2010:WorkflowViewState.IdRef="LogMessage_11" Message="[&quot;Downloaded Foreclosure CSV for Orange County&quot;]">
                       <sap:WorkflowViewStateService.ViewState>
                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                           <x:Boolean x:Key="IsPinned">False</x:Boolean>
                         </scg:Dictionary>
                       </sap:WorkflowViewStateService.ViewState>
                     </ui:LogMessage>
-                    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="416,52" sap2010:WorkflowViewState.IdRef="LogMessage_14" Message="[&quot;Downloaded Foreclosure CSV for Seminole County&quot;]">
-                      <sap:WorkflowViewStateService.ViewState>
-                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                          <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                        </scg:Dictionary>
-                      </sap:WorkflowViewStateService.ViewState>
-                    </ui:LogMessage>
+                    <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'Log Off'" sap:VirtualizedContainerService.HintSize="416,194" sap2010:WorkflowViewState.IdRef="NClick_20" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="e09c41a4-8693-49b5-9859-5d3301bfa32b" Version="V3">
+                      <uix:NClick.Target>
+                        <uix:TargetAnchorable BrowserURL="https://orange.realforeclose.com/index.cfm?zaction=admin&amp;zmethod=REPORT&amp;Report_id=33" CvTextArgument="Log Off" CvType="Text" DesignTimeRectangle="969, 146, 78, 40" DesignTimeScaleFactor="1" ElementType="Text" FriendlyName="'Log Off'" FullSelectorArgument="&lt;webctrl id='LogOff' tag='A' /&gt;" FuzzySelectorArgument="&lt;webctrl id='LogOff' tag='A' type='' class='' aaname='Log Off' check:innerText='Log Off' /&gt;" Guid="c933d220-e055-4aae-8243-9870ecd4e77d" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAFIAAAAsCAYAAAD2BO8qAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAARvSURBVGhD7ZfJUpU5GIaz5fxn4LZoBxQE0fsQFtrSA63Yk7MbdQU30Raw4AoEenN22LqDKhZYZZeb+I1JTk4OiXCUTVL11jc8Sf7kNSKaiZsv7MTN5yCML2yLctCN55JXXsINNqgp0lonV87KcdO68cy2FnQS5CCKC5xXXsbhRT51ExBOLDyFCD0UscpLuMGmSieNUuXpPsowfGJb10Eucm+CVHkJNwQG9FgU91WVpzgYCc15hSKsw17lWW5a848geWQbgY3m17lfeRk3zfxDgSqsH/LiOa0rz3EysjUHBYiiTpRe5WXcNHN/QwOFQPNaf20tRv5lm2sQUVC3sQ4mVZ7nprmGk0S0oNanqU0z+6dtK4Cca4jU07ryHDfUpOIP28Yok6k3C73Ki7ihAtRIbM9IjJTjt/79ZO3H/+ziKdefha99sNE4tGvRnGZ2z/aF2g970Busz3o+MrKZ/R0K0UyQk8r4Ihn5DoxMc1ePlYsZ+N2Qbx2SP/0t7KXP5+oxnc+0Zx4wpPjAdigPVcYX94KDJnhu/Wn42ntw6/1umpOZn+z2a16vc5VzDS/zhP19P89N+yrDDk3iySTsg0q5NzLNab28FB1HexsDnPZw49BuB384Q99//c4eiVHp823Y7Y/4jT5FPz7bo/8lpYF75O+X42DkKjRWoaFCiD1cwL0S7ow8iesLwR4ZwWbS/pvBC0JONQzaU7+NCjn8LMQ8xSH6M6361yt83dWj13/N/Z2RqvbV+5xf0bqM+0OnuL4OfIGe+zVpTpcVI6gHchyNjNgAH9g/NI55bGRqPddl3HSuILhv2xBVNEn6pdwdOsl36R+F/ma0nl7loV0fwcM/nKHvy4tcx3rE+cL17kUKVyP1nKn14f1yHIy8xwXFOE/10pwPvS9GxlyN4rmu78xI8/Sekr/a55+RrwbX+PyNvPI31GPjdhz39aj1ofLcdKYx+Y0b0xglh9ilXhn3l07x8FKeL7k1aU6XDfeMvu/NSPDNA4Bq9PBcV4/p/qaLMCHu35M4rJg7I0/idDHh9KLEPJzjLi6cahjBnqF43x35PTKaI2vxhev3vXGDtfJY8flz3HQur9guihorlmrNMRZyel3JAea8lDVqjgwyMdifzdZxwL/+HO/bpfCbYS7fX9qNv31g16PzsXFv3XpnrPCT9i/hhiZd/hUgApwIuchtck58EQ2Cy4/i532+kJvuJUgueUhyNbLvwf+x28f8Yhx/yX/1+xvj2D9g34iDkdr8BRqBsB5Y9K35W/55F4z+Rshz68+Xg5ECLkoE9bQXqnKXp7jpXvwZEhQ0MJcFPcpFlWc5GPkTOOybPah9jrHyEk5Gdi9AgQ2IVGNO9TLXlWc5GLnsmj3MEWJOERdVXsJN78JdnkTxLkCpfwj7lee4oUYoWUCKWeUjuRj5o52EiMKcpXXlJRyMvCPgjp2cggWgHkrqysu4mZzChjQlx4iTJ2ly5SXc9KZuS4FxOK+8jBv5b20dZxzVyDGNauRYhrVfAB0cO2ehQ5uZAAAAAElFTkSuQmCC" InformativeScreenshot="6563e2c1aa9a4b5583fb99a0e7b471c9.png" ScopeSelectorArgument="&lt;html app='msedge.exe' title='RealForeclose- Orange County -Report Viewer' /&gt;" SearchSteps="FuzzySelector, Image, CV" Version="V2" Visibility="Interactive" />
+                      </uix:NClick.Target>
+                    </uix:NClick>
+                    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="416,172" sap2010:WorkflowViewState.IdRef="LogMessage_15" Level="Info" Message="[&quot;Logged off Realforeclose site&quot;]" />
                   </Sequence>
                 </Sequence>
               </If.Then>

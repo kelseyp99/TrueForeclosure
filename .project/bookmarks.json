@@ -4,10 +4,19 @@
       {
         "IsEnabled": true,
         "Annotation": null,
-        "Id": "b6d2e41d-1b21-41a6-bd9d-8783a9928421",
-        "ActivityIdRef": "MultipleAssign_33",
-        "ActivityId": "1.1300",
-        "ActivityName": "Multiple Assign",
+        "Id": "a9d5ea94-ade6-49a6-b2bc-a02dd51ae85d",
+        "ActivityIdRef": "LoadScript_1",
+        "ActivityId": "1.1253",
+        "ActivityName": "Load Python Script",
+        "IsTransient": false
+      },
+      {
+        "IsEnabled": true,
+        "Annotation": null,
+        "Id": "fca6d0a8-1f71-45a7-a2e6-2079d61fff5f",
+        "ActivityIdRef": "InvokeMethod_2",
+        "ActivityId": "1.31",
+        "ActivityName": "update report",
         "IsTransient": false
       }
     ],
@@ -17,7 +26,7 @@
         "Annotation": null,
         "Id": "59eda46a-1e3b-45ab-82e9-caee30c575af",
         "ActivityIdRef": "NSelectItem_3",
-        "ActivityId": "1.75",
+        "ActivityId": "1.85",
         "ActivityName": "Select Item 'Auction Type'",
         "IsTransient": false
       },
